@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_222906) do
+ActiveRecord::Schema.define(version: 2021_01_04_223411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_222906) do
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "type_id"
   end
 
   create_table "statistics", force: :cascade do |t|
@@ -43,6 +44,13 @@ ActiveRecord::Schema.define(version: 2021_01_04_222906) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["race_id"], name: "index_statistics_on_race_id"
     t.index ["user_id"], name: "index_statistics_on_user_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.string "distance"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
