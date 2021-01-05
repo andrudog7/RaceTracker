@@ -60,12 +60,12 @@
     position: absolute;
 }
 
-.menu_bar li a.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
 .menu_bar li a:hover:not(.active) {
     background-color: #555;
     color: white;
 }
+
+.menu_bar li a:active {
+    background-color: #4CAF50;
+    color: white;
+  }
