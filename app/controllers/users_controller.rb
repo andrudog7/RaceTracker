@@ -14,6 +14,10 @@ class UsersController < ApplicationController
         end
     end
 
+    def login
+        redirect_to 'application/login'
+    end
+
     private 
 
     def user_params
