@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :require_logged_in, only: [:show]
 
     def new 
         @user = User.new 
@@ -15,16 +16,9 @@ class UsersController < ApplicationController
     end
 
     def show 
-        if logged_in?
-            redirect_to user_path(current_user)
-        else
-            redirect_to '/'
-        end
     end
 
     def destroy 
-        session.delete :user_id if session[:user_id]
-        redirect_to '/'
     end
 
     

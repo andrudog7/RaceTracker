@@ -1,0 +1,11 @@
+<h1>Login below</h1>
+<div class="login_form">
+    <%= form_with url: "/login", method: :post do |form| %>
+        <%= form.label :email %>
+        <%= form.email_field :email %><br>
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+        <%= form.submit "Login" %>
+    <% end %>
+</div><br><br>
+<h2>Use Google Login</h2>

@@ -2,13 +2,8 @@ class ApplicationController < ActionController::Base
     def home
     end
 
-    def login
-        if !logged_in?
-            render :login
-        else
-            redirect_to user_path(current_user)
-        end
-    end
+
+    private 
 
     def current_user
         @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
@@ -17,4 +12,11 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !!current_user 
     end
+
+    def require_logged_in 
+        if !logged_in?
+            redirect_to '/'
+        end
+    end
+
 end
