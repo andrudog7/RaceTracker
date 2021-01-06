@@ -29,16 +29,5 @@ class User < ApplicationRecord
             []
         end
     end
-
-    # def half_marathons
-    #     self.types.where(:name => "Half-Marathon").first.races
-    # end
-
-    # def tenks
-    #     self.types.where(:name => "10k").first.races
-    # end
-
-    # def fiveks
-    #     self.types.where(:name => "5k").first.races
-    # end
+    
 end
