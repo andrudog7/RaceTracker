@@ -1,5 +1,6 @@
 module UsersHelper
-    def marathons
-        self.types.where(:name => "Marathon").first.races
+    
+    def dashboard
+    ["5k", "10k", "Half-Marathon", "Marathon"]
     end
 end

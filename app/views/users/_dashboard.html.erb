@@ -1,0 +1,14 @@
+
+<div class="dashboard">
+    <div id="dashboard"><h2>My Racing Dashboard</h2></div>
+    <div id="race_types">
+        <%dashboard.each do |type|%>
+            <div id=<%=type%>><%=type%>
+                <ul>
+                <li><%=current_user.race_type(type).count%></li>
+                <li><%=current_user.total_race_type_distance(type)%></li>
+                </ul>
+                <%end%>
+        </div>                           
+    </div>
+</div>
