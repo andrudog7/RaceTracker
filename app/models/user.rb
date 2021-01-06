@@ -11,4 +11,20 @@ class User < ApplicationRecord
     validates :password, confirmation: true
     validates :password_confirmation, presence: true
     validates :age, numericality: { less_than: 100, greater_than: 0, message: "must be a number between 1 and 99"}
+
+    def marathons
+        self.types.where(:name => "Marathon").first.races
+    end
+
+    def half_marathons
+        self.types.where(:name => "Half-Marathon").first.races
+    end
+
+    def tenks
+        self.types.where(:name => "10k").first.races
+    end
+
+    def fiveks
+        self.types.where(:name => "5k").first.races
+    end
 end

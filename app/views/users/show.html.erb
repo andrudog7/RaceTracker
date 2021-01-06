@@ -10,7 +10,7 @@
             <li>10k</li>
             <li>Half-Marathon</li>
             <li>Marathon</li>
-            <li><%current_user.types.where(:name => "Marathon").first.races.each do |race|%>
+            <li><%current_user.marathons.each do |race|%>
                 <%=race.name%>
                 <%=race.location%>
                 <%=race.type.distance%>
