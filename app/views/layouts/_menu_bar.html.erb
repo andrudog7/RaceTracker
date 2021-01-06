@@ -10,6 +10,7 @@
 <div class="menu_bar">
         <ul>
             <li><%=link_to image_tag("racetrackerlogo.jpg", width:'110px',), '/'%></li>
+            <li><%=link_to "My Dashboard", user_path(current_user)%></li>
             <li><%=link_to "Logout", '/logout', method: "post"%></li>
         </ul>
     </div>
