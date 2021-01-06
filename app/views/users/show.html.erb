@@ -5,7 +5,18 @@
 <div class="dashboard">
     <div id="dashboard"><h2>My Racing Dashboard</h2></div>
     <div id="race_types">
-        
+        <ul>
+            <li>5k</li>
+            <li>10k</li>
+            <li>Half-Marathon</li>
+            <li>Marathon</li>
+            <li><%current_user.types.where(:name => "Marathon").first.races.each do |race|%>
+                <%=race.name%>
+                <%=race.location%>
+                <%=race.type.distance%>
+                <%end%>
+            </li>
+        </ul>
     </div>
 </div>
 

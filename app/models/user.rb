@@ -3,6 +3,7 @@ class User < ApplicationRecord
     has_many :statistics
     has_many :races, through: :statistics
     has_many :likes
+    has_many :types, through: :races 
     validates :email, presence: true, uniqueness: true
     validates :first_name, :last_name, presence: true, format: { with: /\A\D+\z/,
         message: "cannot contain numbers" }
