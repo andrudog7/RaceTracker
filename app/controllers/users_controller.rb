@@ -14,15 +14,7 @@ class UsersController < ApplicationController
             render new_user_path
         end
     end
-
-    def show 
-    end
-
-    def destroy 
-    end
-
     
-
     private 
 
     def user_params
