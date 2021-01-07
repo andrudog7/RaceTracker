@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_01_06_222407) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "type_id"
-    t.boolean "public"
+    t.boolean "public", default: true
   end
 
   create_table "statistics", force: :cascade do |t|

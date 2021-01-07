@@ -1,7 +1,2 @@
 <h1>Recent Races</h1>
-<%@races.each do |race|%>
-    <%=race.name%><br>
-    <%=race.location%><br>
-    <%=race.type.name%><br>
-    <%=race.type.distance%><br><br>
-<%end%>
+<%=render 'public_races'%>
