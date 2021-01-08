@@ -6,11 +6,11 @@ class TypesController < ApplicationController
   end
 
   def show
+    @type = Type.find(params[:id])
     if logged_in?
-      @type = Type.find(params[:id])
       render users_show_race_type_path
     else
-      redirect_to '/'
+      render 'show'
     end
   end
 

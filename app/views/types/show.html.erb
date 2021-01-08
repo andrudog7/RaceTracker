@@ -1,2 +1,12 @@
-<h1>My <%=@type.name%>'s</h1>
+<h1><%=@type.name%>'s</h1>
+<ul class="public_races">
+    <%Type.public_races(@type.name).each do |race|%>
+    <ul class="individual_public_race">
+        <li><%=race.name%></li>
+        <li><%=race.location%></li>
+        <li><%=race.type.distance%> miles</li>
+        <li><%=race.users.count%> people have finished</li>
+    </ul>
+    <%end%>
+    </ul>
 <p>Find me in app/views/types/show.html.erb</p>
