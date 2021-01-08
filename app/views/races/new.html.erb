@@ -1,10 +1,16 @@
 <h1>Create a New Race!</h1>
 <%=form_with(model: @race) do |f|%>
-<%=f.label :name%>
-<%=f.text_field :name%><br><br>
-<%=f.label :location%>
-<%=f.text_field :location%><br><br>
-<%=f.label :date%>
-<%=f.date_field :date%><br><br>
-
+    <%=f.label :name%>
+    <%=f.text_field :name%><br><br>
+    <%=f.label :location%>
+    <%=f.text_field :location%><br><br>
+    <%=f.label :date%>
+    <%=f.date_field :date%><br><br>
+    <%=f.fields_for :type, @race.type do |t|%>
+        <%=t.label "Distance"%>
+        <%=t.collection_select :id, Type.all, :id, :name, :prompt => 'Select Type'%><br><br>
+    <%end%>
+    <%=f.label :public, "Make Public"%><br>
+    <%=f.check_box :public%><br><br>
+    <%=f.submit "Create Race"%>
 <%end%>
