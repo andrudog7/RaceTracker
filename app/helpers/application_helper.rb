@@ -17,7 +17,7 @@ module ApplicationHelper
         if !logged_in?
             content_tag(:div, class: "menu_bar") do 
                 content_tag(:ul) do
-                    logo = link_to image_tag("racetrackerlogo.jpg", width:'110px'), '/'
+                    logo = link_to image_tag("racetrackerlogo.jpg", id: "test", width:'110px'), '/'
                     signup = link_to "Sign Up", new_user_path
                     login = link_to "Login", '/login'
                     dashboard_elements = [logo, signup, login]
@@ -31,12 +31,34 @@ module ApplicationHelper
                 content_tag(:ul) do
                     logo = link_to image_tag("racetrackerlogo.jpg", width:'110px'), '/'
                     dashboard = link_to "My Dashboard", user_path(current_user)
+                    button = button_tag 'Races', class: "dropdown_btn"
                     logout = link_to "Logout", '/logout', method: "post"
-                    dashboard_elements = [logo, dashboard, logout]
+                    dashboard_elements = [logo, dashboard, button, logout]
+                    type_tags = []
+                    current_user.types.each do |type|
+                                    type_tags << (type.name)
+                                end
                     dashboard_elements.each do |link|
-                        concat content_tag(:li, link)
+                        if link != button
+                            concat content_tag(:li, link)
+                        elsif link == button
+                            concat button
+                            menu_race_types
+                        end
                     end
                 end
+            end
+        end
+    end
+
+    def menu_race_types
+        concat content_tag(:div, dropdown_menu_race_types, class: "dropdown_container") 
+    end
+
+    def dropdown_menu_race_types
+        content_tag(:ul) do
+            current_user.types.map do |type|
+                concat content_tag(:li, type.name)
             end
         end
     end

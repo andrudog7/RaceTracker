@@ -11,6 +11,22 @@
   </head>
   
   <%=menu_bar%>
+  <script>
+    var dropdown = document.getElementsByClassName("dropdown_btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "inline") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "inline";
+  }
+  });
+}
+  </script>
   
   <body>
     <div style="margin-left: 120px;">
