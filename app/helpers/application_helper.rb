@@ -31,7 +31,7 @@ module ApplicationHelper
                 content_tag(:ul) do
                     logo = link_to image_tag("racetrackerlogo.jpg", width:'110px'), '/'
                     dashboard = link_to "My Dashboard", user_path(current_user)
-                    button = button_tag 'Races', class: "dropdown_btn"
+                    button = button_tag 'My Races', class: "dropdown_btn"
                     logout = link_to "Logout", '/logout', method: "post"
                     dashboard_elements = [logo, dashboard, button, logout]
                     type_tags = []
@@ -58,8 +58,12 @@ module ApplicationHelper
     def dropdown_menu_race_types
         content_tag(:ul) do
             current_user.types.map do |type|
-                concat content_tag(:li, type.name)
+                concat content_tag(:li, type_links(type))
             end
         end
+    end
+
+    def type_links(type)
+        link_to type.name, type_path(type)        
     end
 end

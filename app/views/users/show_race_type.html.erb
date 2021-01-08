@@ -1,0 +1,9 @@
+<h1>My <%=@type.name%>'s</h1>
+<p><%@type.races.each do |race|%>
+    <ul>
+    <li><h3><%=race.name%></h3></li>
+    <li><%=@type.distance%> miles</li>
+    <li><%=race.location%></li>
+    </ul>
+    <%end%>
+</p>

@@ -14,7 +14,10 @@ class UsersController < ApplicationController
             render new_user_path
         end
     end
-    
+
+    def show_race_type
+    end
+
     private 
 
     def user_params
