@@ -4,17 +4,44 @@ module UsersHelper
     ["5k", "10k", "Half-Marathon", "Marathon"]
     end
 
-    def user_races(type)
+    def user_race_count_of_type(type)
+        if user_races_of_type(type) != []
+            user_races_of_type(type).races.count
+        else
+            "0"
+        end
+    end
+
+    def races_ordered
+    end
+
+    def user_races_of_type(type)
         if current_user.types.where(:name => type) != []
-            current_user.types.where(:name => type).first.races.select{|race|race.users.include?(current_user)}
+            current_user.types.where(:name => type).first
         else
             []
         end
     end
 
-    def fastest_race(type)
-        if user_races(type) != []
-            user_races(type).includes(:finish_time).order('finish_time.sort_order')
+    def fastest_race_finish_time(type)
+        if user_races_of_type(type) != []
+            user_races_of_type(type).statistics.ordered.first.finish_time.strftime("%H:%M:%S")
+        else 
+            "Not Yet Available"
+        end
+    end
+
+    def fastest_race_finish_pace(type)
+        if user_races_of_type(type) != []
+            user_races_of_type(type).statistics.ordered.first.finish_pace.strftime("%H:%M")
+        else 
+            "Not Yet Available"
+        end
+    end
+
+    def fastest_race_name(type)
+        if user_races_of_type(type) != []
+            user_races_of_type(type).statistics.ordered.first.race.name
         else 
             "Not Yet Available"
         end

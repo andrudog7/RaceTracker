@@ -1,21 +1,26 @@
 <h1>Create a New Race!</h1>
 <%=form_with(model: @race) do |f|%>
-    <%=f.label :name%>
+    <%=f.label :name, "Race Name"%>
     <%=f.text_field :name%><br><br>
-    <%=f.label :location%>
+    <%=f.label :location, "Race Location"%>
     <%=f.text_field :location%><br><br>
-    <%=f.label :date%>
+    <%=f.label :date, "Race Date"%>
     <%=f.date_field :date%><br><br>
     <%=f.fields_for :type, @race.type do |t|%>
-        <%=t.label "Distance"%>
-        <%=t.collection_select :id, Type.all, :id, :name, :prompt => 'Select Type'%><br><br>
+        <h4>Select the type of race or create a new one!</h4>
+        <%=t.label "Type"%>
+        <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, :prompt => 'Select Type'%><br><br>
+        <%=t.label :name, "New Type (ex. 4 Miler)"%>
+        <%=t.text_field :name%><br>
+        <%=t.label :distance, "Distance (in miles)"%>
+        <%=t.text_field :distance%><br><br>
     <%end%>
     <%=f.label :public, "Make this race public (this will allow other users to add their statistics to the race)"%>
     <%=f.check_box :public%><br><br>
-    <h3>My Finish Stats</h3>
+    <h3>Add Your Finisher Stats</h3>
     <%=f.fields_for :statistic, @race.statistics.first do |s|%>
         <%=s.label :finish_time, "Finish Time"%>
-        <%=s.text_field :finish_time, placeholder: "hh:mm:ss", pattern: /\d{2}:[012345][0-9]:[012345][0-9]/%><br><br>
+        <%=s.text_field :finish_time, placeholder: "hh:mm:ss", pattern: /\d{2}:[012345][0-9]:[012345][0-9]/%><br>
         <%=s.label :finish_pace, "Finish Pace"%>
         <%=s.text_field :finish_pace, placeholder: "mm:ss", pattern: "[012345][0-9]:[012345][0-9]"%><br><br>
         <%=s.label :public, "Allow other users to see your finish stats"%>

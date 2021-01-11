@@ -4,8 +4,12 @@
         <%dashboard.each do |type|%>
             <div id=<%=type%>><%=type%>
                 <ul>
-                <li>Total <%=type.pluralize%><br><%=user_races(type).count%></li>
+                <li>Total <%=type.pluralize%><br><%=user_race_count_of_type(type)%></li>
                 <li>Total Miles<br><%=current_user.total_race_type_distance(type)%></li>
+                <li>Fastest <%=type%><br>
+                <%=fastest_race_name(type)%><br>
+                Finish Time: <%=fastest_race_finish_time(type)%><br>
+                Finish Pace: <%=fastest_race_finish_pace(type)%></li>
                 </ul>
                 <%end%>
         </div>                           

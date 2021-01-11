@@ -15,7 +15,7 @@ class User < ApplicationRecord
     def total_race_type_distance(distance)
         count = self.types.where(:name => distance).count
         if self.types.where(:name => distance).first != nil
-            distance = self.types.where(:name => distance).first.distance.to_f
+            distance = self.types.where(:name => distance).first.distance
         else
             distance = 0
         end
