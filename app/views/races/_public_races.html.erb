@@ -1,5 +1,5 @@
 <%public_races.each do |race|%>
-    <%=race.name%><br>
+    <%=link_to race.name, race_path(race)%><br>
     <%=race.type.name%><br>
     <%=race.type.distance%><br><br>
 <%end%>

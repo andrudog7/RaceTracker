@@ -1,8 +1,8 @@
 <h1><%=@race.name%></h1>
 <ul>
     <li><%=@race.location%></li>
-    <li><%=@race.date.strftime("%A %B %d, %Y")%></li>
-    <li><%=@race.type.distance%></li>
+    <li><%=@race.date_format%></li>
+    <li><%=@race.type.distance%> miles</li>
     <h3>Finishers</h3>
     <table class = "finisher_stats">
         <thead>
@@ -14,12 +14,12 @@
             </tr>
         </thead>
         <body>
-            <%@race.public_statistics.each do |stat| %>  
+            <%public_statistics(@race).each do |stat| %>  
             <tr>
                 <td><%=stat.user.first_name%> <%=stat.user.last_name%></td>
                 <td><%=stat.user.age%></td>
-                <td><%=stat.finish_time.strftime("%H:%M:%S")%></td>
-                <td><%=stat.finish_pace.strftime("%H:%M")%></td>
+                <td><%=stat.finish_time_format%></td>
+                <td><%=stat.finish_pace_format%></td>
             </tr>
             <%end%>
         </body>

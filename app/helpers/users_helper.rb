@@ -12,9 +12,6 @@ module UsersHelper
         end
     end
 
-    def races_ordered
-    end
-
     def user_races_of_type(type)
         if current_user.types.where(:name => type) != []
             current_user.types.where(:name => type).first

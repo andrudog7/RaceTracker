@@ -5,9 +5,9 @@ class Race < ApplicationRecord
     belongs_to :owner, :class_name => "User"
     accepts_nested_attributes_for :type
     accepts_nested_attributes_for :statistics
+    validates :name, uniqueness: true 
 
-    def public_statistics
-        self.statistics.select{|stat|stat.public == true}
+    def date_format
+        self.date.strftime("%A %B %d, %Y")
     end
-
 end
