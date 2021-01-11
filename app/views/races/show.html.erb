@@ -3,5 +3,25 @@
     <li><%=@race.location%></li>
     <li><%=@race.date.strftime("%A %B %d, %Y")%></li>
     <li><%=@race.type.distance%></li>
-    
+    <h3>Finishers</h3>
+    <table class = "finisher_stats">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Finish Time</th>
+                <th>Pace</th>
+            </tr>
+        </thead>
+        <body>
+            <%@race.public_statistics.each do |stat| %>  
+            <tr>
+                <td><%=stat.user.first_name%> <%=stat.user.last_name%></td>
+                <td><%=stat.user.age%></td>
+                <td><%=stat.finish_time.strftime("%H:%M:%S")%></td>
+                <td><%=stat.finish_pace.strftime("%H:%M")%></td>
+            </tr>
+            <%end%>
+        </body>
+    </table>
 </ul>

@@ -4,10 +4,10 @@ class Race < ApplicationRecord
     belongs_to :type
     belongs_to :owner, :class_name => "User"
     accepts_nested_attributes_for :type
+    accepts_nested_attributes_for :statistics
 
-    def type_attributes=(attributes)
-        byebug
+    def public_statistics
+        self.statistics.select{|stat|stat.public == true}
     end
-
 
 end
