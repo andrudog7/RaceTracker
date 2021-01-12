@@ -5,7 +5,7 @@
         <li><h3 class="race_link"><%=link_to race.name, race_path(race)%></h3></li>
         <li><%=race.location%></li>
         <li><%=race.type.distance%> miles</li>
-        <li><%=race.users.count%> people have finished</li>
+        <li><%=race.users.count + "people".pluralize%> people have finished</li>
     </ul>
     <%end%>
     </ul>

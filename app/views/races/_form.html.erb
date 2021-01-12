@@ -18,11 +18,11 @@
     <%=f.label :public, "Make this race public (this will allow other users to add their statistics to the race)"%>
     <%=f.check_box :public%><br><br>
     <h3>Add Your Finisher Stats</h3>
-    <%=f.fields_for :statistic, @race.statistics.first do |s|%>
+    <%=f.fields_for :statistic, current_user_stats_for_form(@race)do |s|%>
         <%=s.label :finish_time, "Finish Time"%>
-        <%=s.text_field :finish_time, placeholder: "hh:mm:ss", pattern: /\d{2}:[012345][0-9]:[012345][0-9]/%><br>
+        <%=s.text_field :finish_time, value: finish_time_value(@race), placeholder: "hh:mm:ss", pattern: /\d{2}:[012345][0-9]:[012345][0-9]/%><br>
         <%=s.label :finish_pace, "Finish Pace"%>
-        <%=s.text_field :finish_pace, placeholder: "mm:ss", pattern: "[012345][0-9]:[012345][0-9]"%><br><br>
+        <%=s.text_field :finish_pace, value: finish_pace_value(@race), placeholder: "mm:ss", pattern: "[012345][0-9]:[012345][0-9]"%><br><br>
         <%=s.label :public, "Allow other users to see your finish stats (if race is public)"%>
         <%=s.check_box :public%><br><br>
         <%end%>

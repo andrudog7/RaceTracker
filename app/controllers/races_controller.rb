@@ -36,6 +36,12 @@ class RacesController < ApplicationController
         @race = Race.find(params[:id])
     end
 
+    def update
+        race = Race.find(params[:id])
+        race.update(race_params)
+        redirect_to race_path(race)
+    end
+
     private 
 
     def race_params
