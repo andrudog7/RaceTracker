@@ -11,16 +11,20 @@ class Race < ApplicationRecord
         if attr["name"].present? && attr["distance"].present?
             self.type = Type.find_or_create_by(attr)
         else
-            self.type = Type.find(attr["id"]) 
+            self.type = Type.find(attr["id"])
+            self.save 
         end
     end
 
     def statistic=(attr)
         if attr["finish_time"].present? && attr["finish_pace"].present? && attr["public"].present?
             if self.id != nil
+                if attr["id"].present?
+                else
                 s = Statistic.new(:finish_time => attr["finish_time"], :finish_pace => attr["finish_pace"], :public => attr["public"], :user_id => attr["user_id"])
                 s.save
                 self.statistics << s
+                end
             end
         end
         self.save

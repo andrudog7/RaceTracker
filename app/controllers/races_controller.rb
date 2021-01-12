@@ -36,8 +36,12 @@ class RacesController < ApplicationController
         @race = Race.find(params[:id])
     end
 
-    def update
+    def update  
         race = Race.find(params[:id])
+        if race_params[:statistic][:id].present?
+            s = Statistic.find(race_params[:statistic][:id])
+            s.update(race_params[:statistic])
+        end
         race.update(race_params)
         redirect_to race_path(race)
     end
@@ -47,7 +51,7 @@ class RacesController < ApplicationController
     def race_params
         params.require(:race).permit(:name, :location, :date, :public, 
             type_attributes: [:id, :name, :distance],
-            statistic: [:finish_time, :finish_pace, :public]
+            statistic: [:finish_time, :finish_pace, :public, :id]
         )
     end
 end

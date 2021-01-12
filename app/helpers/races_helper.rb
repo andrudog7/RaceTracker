@@ -42,9 +42,33 @@ module RacesHelper
 
     def edit_race_button_text(race)
         if race.owner == current_user
-            "Update Race"
+            "Edit Race"
         else
             "Add Your Stats"
+        end
+    end
+
+    def submit_button_text(race)
+        if race.owner == nil
+            "Create Race"
+        else
+            "Update Race"
+        end
+    end
+
+    def form_url(race)
+        if @race.owner == nil 
+            new_race_path(race)
+        else
+            race_path(race)
+        end
+    end
+
+    def form_method(race)
+        if @race.owner == nil 
+            'get'
+        else 
+            'put'
         end
     end
 end
