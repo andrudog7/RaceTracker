@@ -1,0 +1,21 @@
+<h1>Edit Your Race</h1>
+<%if @race.owner == current_user%>
+    <%=render 'form'%>
+<%else%>
+    <%=@race.name%>
+    <%=@race.location%>
+    <%=@race.date%>
+    <%=@race.type.name%>
+    <%=@race.type.distance%><br>
+    <h3>Update Your Stats</h3>
+    <%=form_with(model: @race) do |f|%>
+    <%=f.fields_for :statistic, current_user_stats(@race) do |s|%>
+        <%=s.label :finish_time, "Finish Time"%>
+        <%=s.text_field :finish_time, pattern: /\d{2}:[012345][0-9]:[012345][0-9]/%><br>
+        <%=s.label :finish_pace, "Finish Pace"%>
+        <%=s.text_field :finish_pace, pattern: "[012345][0-9]:[012345][0-9]"%><br><br>
+        <%=s.label :public, "Allow other users to see your finish stats (if race is public)"%>
+        <%=s.check_box :public%><br><br>
+        <%end%>
+    <%end%>
+<%end%>

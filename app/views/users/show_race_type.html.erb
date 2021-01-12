@@ -1,11 +1,11 @@
 <h1>My <%=@type.name%>'s</h1>
-<p><%current_user.races.where(:type => @type).sort{|race|race.statistics.first.finish_time}.each do |race|%>
+<p><%@type.statistics.ordered.where(:user_id => current_user).each do |stat|%>
     <ul>
-    <li><h3><%=race.name%></h3></li>
+    <li><h3 class="race_link"><%=link_to stat.race.name, race_path(stat.race)%></h3></li>
     <li><%=@type.distance%> miles</li>
-    <li><%=race.location%></li>
-    <li>Finish Time: <%=user_race_stats(race).finish_time.strftime("%H:%M:%S")%></li>
-    <li>Finish Pace: <%=user_race_stats(race).finish_pace.strftime("%H:%M")%></li>
+    <li><%=stat.race.location%></li>
+    <li>Finish Time: <%=user_race_stats(stat.race).finish_time_format%></li>
+    <li>Finish Pace: <%=user_race_stats(stat.race).finish_pace_format%></li>
     </ul>
     <%end%>
 </p>

@@ -22,7 +22,7 @@ module UsersHelper
 
     def fastest_race_finish_time(type)
         if user_races_of_type(type) != []
-            user_races_of_type(type).statistics.ordered.first.finish_time.strftime("%H:%M:%S")
+            user_races_of_type(type).statistics.ordered.first.finish_time_format
         else 
             "Not Yet Available"
         end
@@ -30,7 +30,7 @@ module UsersHelper
 
     def fastest_race_finish_pace(type)
         if user_races_of_type(type) != []
-            user_races_of_type(type).statistics.ordered.first.finish_pace.strftime("%H:%M")
+            user_races_of_type(type).statistics.ordered.first.finish_pace_format
         else 
             "Not Yet Available"
         end

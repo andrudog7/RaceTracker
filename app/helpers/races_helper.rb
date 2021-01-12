@@ -15,4 +15,8 @@ module RacesHelper
             race.statistics.select{|stat|stat.public == true}
         end
     end
+
+    def current_user_stats(race)
+        race.users.where(:id => current_user.id).first.statistics.first
+    end
 end
