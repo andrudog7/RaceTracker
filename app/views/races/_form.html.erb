@@ -6,7 +6,7 @@
     <%=f.label :date, "Race Date"%>
     <%=f.date_field :date%><br><br>
     <%=f.fields_for :type, @race.type do |t|%>
-        <%if @race.type == nil%>
+        <%if @race.type.name == nil%>
         <h4>Select the type of race or create a new one!</h4>
         <%=t.label "Type"%>
         <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, :prompt => 'Select Type'%><br><br>
@@ -28,7 +28,7 @@
         <h4>Update Your Finisher Stats</h4>
     <%end%>
     <%=f.fields_for :statistic, current_user_stats_for_form(@race) do |s|%>
-        <%=render partial: 'stats_fields', locals: {s: s}%>
+        <%=render partial: '/statistics/stats_fields', locals: {s: s}%>
         <%end%>
     <%=f.submit submit_button_text(@race)%>
 <%end%>

@@ -1,7 +1,7 @@
 <h1>My <%=@type.name%>'s</h1>
 <p><%@type.statistics.ordered.where(:user_id => current_user).each do |stat|%>
     <ul>
-    <li><h3 class="race_link"><%=link_to stat.race.name, race_path(stat.race)%></h3></li>
+    <li><h3 class="race_link"><%=link_to stat.race.name, race_statistics_path(stat.race)%></h3></li>
     <li><%=@type.distance%> miles</li>
     <li><%=stat.race.location%></li>
     <li><%=stat.race.date_format%></li>
