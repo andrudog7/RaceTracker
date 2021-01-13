@@ -4,15 +4,14 @@ module RacesHelper
     end
 
     def public_statistics(race)
-        if race.users.include?(current_user) && race.statistics.where(:user => current_user).first.public != true
-           statistics = [] 
-           statistics << race.statistics.where(:user => current_user).first
-           race.statistics.select{|stat|stat.public == true}.each do |stat|
-            statistics << stat
-           end
-           statistics
+        if race.users.include?(current_user)
+            if race.statistics.where(:user => current_user).first.public != true 
+                race.statistics.ordered.where(:public => true).or(race.statistics.where(:user => current_user))
+            else 
+                race.statistics.ordered.where(:public => true)  
+            end
         else
-            race.statistics.select{|stat|stat.public == true}
+            race.statistics.ordered.where(:public => true)  
         end
     end
 
@@ -24,7 +23,7 @@ module RacesHelper
         if race.users != [] && race.users.include?(current_user)
             current_user_stats(race)
         else
-            race.statistics.first 
+            race.statistics.build 
         end
     end
 

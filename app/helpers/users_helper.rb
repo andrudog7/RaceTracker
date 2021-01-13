@@ -45,6 +45,6 @@ module UsersHelper
     end
 
     def user_race_stats(race)
-        race.statistics.where(:user == current_user).first
+        race.statistics.where(:user => current_user).first
     end
 end

@@ -1,4 +1,5 @@
 class RacesController < ApplicationController
+    before_action :require_logged_in, only: [:new, :create, :edit, :update]
 
     def new 
         @race = Race.new
@@ -7,7 +8,10 @@ class RacesController < ApplicationController
     end
 
     def create
-        if logged_in?
+            @race = Race.find_by(:name => race_params[:name])
+            if @race 
+                redirect_to race_path(@race)
+            else
             @race = Race.new(race_params)
             @race.owner = current_user
             if @race.save 
@@ -38,9 +42,14 @@ class RacesController < ApplicationController
 
     def update  
         race = Race.find(params[:id])
-        if race_params[:statistic][:id].present?
+        if race_params[:statistic][:id].present? && race_params[:statistic][:id] != ""
             s = Statistic.find(race_params[:statistic][:id])
             s.update(race_params[:statistic])
+        else
+            s = Statistic.new(race_params[:statistic])
+            s.user = current_user
+            s.race_id = params[:id]
+            s.save 
         end
         race.update(race_params)
         redirect_to race_path(race)

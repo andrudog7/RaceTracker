@@ -4,6 +4,7 @@
     <li><h3 class="race_link"><%=link_to stat.race.name, race_path(stat.race)%></h3></li>
     <li><%=@type.distance%> miles</li>
     <li><%=stat.race.location%></li>
+    <li><%=stat.race.date_format%></li>
     <li>Finish Time: <%=user_race_stats(stat.race).finish_time_format%></li>
     <li>Finish Pace: <%=user_race_stats(stat.race).finish_pace_format%></li>
     </ul>
