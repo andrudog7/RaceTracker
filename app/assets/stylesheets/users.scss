@@ -1,3 +1,50 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.row {
+    display: grid;
+    gap: 2px;
+    grid-auto-flow: column;
+    justify-items: center;
+}
+.dashboard {
+    float: left;
+    width: 90%;
+}
+
+div#race_types {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    padding: none;
+    align-items: center;
+    justify-items: center;
+    margin: none;
+}
+
+#Half-Marathon, #5k, #10k, #Marathon {
+    width: 80%;
+    display: list-item
+}
+h2 {
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+}
+
+#race_types ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0px;
+}
+
+.race_search {
+    float: left;
+    width: 50%;
+    display: inline;
+    margin: none;
+    text-align: center;
+}

@@ -1,6 +1,37 @@
 class RacesController < ApplicationController
     before_action :require_logged_in, only: [:new, :create, :edit, :update]
 
+    def index
+        if params[:filter].present? || params[:date].present?
+            if params[:date] == ""
+                if Type.where(:name => params[:filter]) == []
+                    @races = Race.where("location like ? or name like ?", "%#{params[:filter]}%", "%#{params[:filter]}%")
+                else
+                    @races = Type.where(:name => params[:filter]).first.races
+                end
+            else
+                if params[:filter] != ""
+                    if Type.where(:name => params[:filter]) == []
+                        @races = Race.where("(date = ?) and (location like ? or name like ?)", Date.parse(params[:date]), "%#{params[:filter]}%", "%#{params[:filter]}%") 
+                    else
+                        @races = Type.where(:name => "Marathon").first.races.where("date = ?", Date.parse(params[:date]))
+                    end
+                elsif params[:filter] == ""
+                    @races = Race.where("date = ?", Date.parse(params[:date]))
+                else
+                    @races = Type.where(:name => params[:filter]).first.races
+                end
+            end
+            if @races == []
+                flash[:message] = "No races were found.  Create the race if it doesn't exist!"
+                redirect_to user_path(current_user)
+            else
+            @races
+            render 'users/show'
+            end
+        end
+    end
+
     def new 
         @race = Race.new
         @race.build_type

@@ -1,4 +1,20 @@
 <%= flash[:message]%>
-<div id="dashboard"><h2>My Racing Dashboard</h2></div>
 <h4>Welcome <%=current_user.first_name%>!</h4>
-<%= render 'dashboard'%><br>
+<div class="row">
+    <%if @races%>
+    <%= render 'users/dashboard'%>
+    <%else%>
+    <%=render 'dashboard'%>
+    <%end%>
+    <div class="race_search">
+    <h2>Find A Race To Add Your Stats</h2>
+    <%= form_tag(races_path, method:"get") do |f| %>
+    <%= label_tag("Search by name, city or type of race:") %>
+    <%= text_field_tag('filter') %>
+    <%= label_tag("Search by date:") %>
+    <%= date_field_tag('date') %>
+    <%= submit_tag("Search") %>
+    <% end %>
+    <%=render '/races/public_races'%>
+    </div>
+</div>

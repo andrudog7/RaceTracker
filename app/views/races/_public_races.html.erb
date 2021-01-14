@@ -1,5 +1,15 @@
-<%public_races.each do |race|%>
-    <h3 class="race_link"><%=link_to race.name, race_statistics_path(race)%></h3><br>
+<%if @races%>
+    <%@races.each do |race|%>
+    <h4 class="race_link"><%=link_to race.name, race_statistics_path(race)%></h4>
     <%=race.type.name%><br>
-    <%=race.type.distance%><br><br>
+    <%=race.date_format%><br>
+    <%=race.type.distance%><br>
+    <%end%>
+<%else%>
+<%public_races.each do |race|%>
+    <h4 class="race_link"><%=link_to race.name, race_statistics_path(race)%></h4>
+    <%=race.type.name%><br>
+    <%=race.date_format%><br>
+    <%=race.type.distance%><br>
+<%end%>
 <%end%>
