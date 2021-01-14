@@ -1,11 +1,12 @@
 <h1><%=@race.name%> Stats</h1>
-<ul>
+<ul style="list-style-type:none;padding:0px">
     <li><%=@race.location%></li>
     <li><%=@race.date_format%></li>
     <li><%=@race.type.distance%> miles</li>
-    <h3>Finishers</h3>
+</ul>
     <table class = "finisher_stats">
         <thead>
+        <caption><h3 style="text-align: center">Finishers</h3></caption>
             <tr>
                 <th>Name</th>
                 <th>Age</th>
@@ -23,8 +24,8 @@
             </tr>
             <%end%>
         </body>
-    </table>
-</ul>
+    </table><br><br>
+
 <%if @race.owner == current_user%>
 <div class="button"><%=link_to "Edit Race", edit_race_path(@race), method: 'get'%>
 <%elsif @race.users.include?(current_user)%>

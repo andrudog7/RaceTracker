@@ -102,3 +102,19 @@
     background-color: #4CAF50;
     color: white;
   }
+
+  /* Button Styling */
+
+div.button a, div.button input {
+        background-color: white;
+        border: 3px solid black;
+        border-color:orange;
+        color: black;
+        padding: 6px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
+div.button a:hover, a:visited, div.button input:hover {
+    background-color: orange;
+}
