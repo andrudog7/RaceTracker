@@ -1,8 +1,2 @@
-
-<%if @race.owner == current_user%>
     <h2>Edit Your Race</h2>
     <%=render 'form'%>
-<%else%>
-    <h2>Edit Your Stats</h2>
-    <%=render 'edit_stats_form'%>
-<%end%>

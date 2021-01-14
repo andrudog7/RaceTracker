@@ -1,0 +1,9 @@
+<h1>Edit Your Statistic</h1>
+<%=@race.name%><br>
+    <%=@race.location%><br>
+    <%=@race.date_format%><br>
+    <%=@race.type.name%><br>
+    <%=@race.type.distance%><br><br>
+    <h4>Edit Your Stats</h4>
+    <%=render 'form'%>
+    <div class="button"><%=link_to "Delete My Statistic", statistic_path(current_user_stats_for_form(@race)), :method => 'delete'%></div>

@@ -1,4 +1,4 @@
-<h1><%=@race.name%> Stats</h1>
+<h1><%=@race.name%></h1>
 <ul>
     <li><%=@race.location%></li>
     <li><%=@race.date_format%></li>
@@ -25,10 +25,5 @@
         </body>
     </table>
 </ul>
-<%if @race.owner == current_user%>
-<div class="button"><%=link_to "Edit Race", edit_race_path(@race), method: 'get'%>
-<%elsif @race.users.include?(current_user)%>
-<div class="button"><%=link_to "Edit My Statistic", edit_race_statistic_path(@race.id, current_user_stats(@race).id)%></div>
-<%else%>
-<div class="button"><%=link_to "Add My Statistic", new_race_statistic_path(@race)%></div>
-<%end%>
+<div class="update_button"><%=button_to edit_race_button_text(@race), new_race_statistic_path(@race), method: 'get'%>
+</div>

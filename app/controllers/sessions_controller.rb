@@ -19,12 +19,28 @@ class SessionsController < ApplicationController
         end
   end
 
+  def omniauth
+    user = User.create_from_omniauth(auth)
+      if user.valid?
+        session[:user_id] = user.id
+        flash[:message] = "You have successfully signed in with Google, #{user.first_name}."
+        redirect_to user_path(user)
+      else
+        flash[:message] = user.errors.full_messages.join(", ")
+        redirect_to '/'
+      end
+  end
+
   def logout
     session.delete :user_id if session[:user_id]
     redirect_to '/'
   end
 
   private 
+
+  def auth 
+    request.env['omniauth.auth']
+  end
 
   def sessions_params
     params.permit(:email, :password)

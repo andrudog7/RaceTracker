@@ -8,4 +8,7 @@
         <%= form.submit "Login" %>
     <% end %>
 </div><br><br>
-<h2>Use Google Login</h2>
+<h1>Sign in with Google</h1>
+<div id="google_login_buton">
+    <%=button_to "Google Login", '/auth/google_oauth2'%>
+</div>

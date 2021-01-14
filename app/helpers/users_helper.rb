@@ -6,7 +6,7 @@ module UsersHelper
 
     def user_race_count_of_type(type)
         if user_races_of_type(type) != []
-            user_races_of_type(type).races.count
+            current_user.races.where(:type => user_races_of_type(type)).count
         else
             "0"
         end

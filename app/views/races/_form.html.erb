@@ -20,15 +20,23 @@
         <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, {:prompt => true, :selected => @race.type.id}%><br><br>
         <%end%>
     <%end%>
-    <%=f.label :public, "Make this race public (this will allow other users to add their statistics to the race)"%>
-    <%=f.check_box :public%><br><br>
+    <%=f.hidden_field :public%>
     <%if @race.type == nil%>
         <h4>Add Your Finisher Stats</h4>
     <%else%>
         <h4>Update Your Finisher Stats</h4>
     <%end%>
     <%=f.fields_for :statistic, current_user_stats_for_form(@race) do |s|%>
-        <%=render partial: '/statistics/stats_fields', locals: {s: s}%>
+        <%=s.hidden_field :id%>
+        <%=s.label :finish_time, "Finish Time"%>
+        <%=s.text_field :finish_time, value: finish_time_value(@race), placeholder: "hh:mm:ss", pattern: /\d{2}:[012345][0-9]:[012345][0-9]/%><br>
+        <%=s.label :finish_pace, "Finish Pace"%>
+        <%=s.text_field :finish_pace, value: finish_pace_value(@race), placeholder: "mm:ss", pattern: "[012345][0-9]:[012345][0-9]"%><br><br>
+        <%=s.label :public, "Allow other users to see your finish stats (if race is public)"%>
+        <%=s.check_box :public%><br><br>
         <%end%>
     <%=f.submit submit_button_text(@race)%>
+        <%if @race.type != nil%>
+        <div class="Delete Button"><%=link_to "Delete My Statistic", statistic_path(current_user_stats_for_form(@race)), :method => 'delete'%></div>
+        <%end%>
 <%end%>

@@ -58,11 +58,11 @@ module ApplicationHelper
     def dropdown_menu_race_types
         content_tag(:ul) do
             if logged_in?
-            current_user.types.uniq.map do |type|
+            current_user.types.order(:distance).uniq.map do |type|
                 concat content_tag(:li, type_links(type))
             end
             else
-                Type.all.map do |type|
+                Type.all.order(:distance).map do |type|
                     concat content_tag(:li, type_links(type))
                 end
             end

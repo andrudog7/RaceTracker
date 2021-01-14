@@ -3,10 +3,6 @@
     <%=@race.date_format%><br>
     <%=@race.type.name%><br>
     <%=@race.type.distance%><br><br>
-    <%=form_with(model: @race) do |f|%>
-    <%=f.fields_for :statistic, @statistic do |s|%>
-        <%=render partial: 'stats_fields', locals: {s: s}%>
-        <%=s.hidden_field :id%>
-        <%=s.submit "Add Stats"%>
-        <%end%>
-    <%end%>
+    <h4>Add Your Stats</h4>
+    <%=render 'form'%>
+    

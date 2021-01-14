@@ -42,6 +42,8 @@ module RacesHelper
     def edit_race_button_text(race)
         if race.owner == current_user
             "Edit Race"
+        elsif race.users.include?(current_user)
+            "Update Your Stats"
         else
             "Add Your Stats"
         end

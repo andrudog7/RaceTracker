@@ -10,7 +10,7 @@ class RacesController < ApplicationController
     def create
             @race = Race.find_by(:name => race_params[:name])
             if @race 
-                redirect_to race_path(@race)
+                redirect_to race_statistics_path(@race)
             else
             @race = Race.new(race_params)
             @race.owner = current_user
@@ -19,12 +19,12 @@ class RacesController < ApplicationController
                     statistic = Statistic.new(finish_time: race_params[:statistic][:finish_time], finish_pace: race_params[:statistic][:finish_pace], public: race_params[:statistic][:public], user_id: current_user.id)
                     @race.statistics << statistic
                     if @race.save
-                        redirect_to race_path(@race)
+                        redirect_to race_statistics_path(@race)
                     else
                         render 'new'
                     end
                 else
-                    redirect_to race_path(@race) 
+                    redirect_to race_statistics_path(@race) 
                 end  
             else
                 redirect_to '/'
@@ -38,6 +38,11 @@ class RacesController < ApplicationController
 
     def edit 
         @race = Race.find(params[:id])
+        if @race.owner == current_user
+            render 'edit'
+        else
+            redirect_to edit_statistic_path(@race.statistics.where(:user => current_user).first)
+        end
     end
 
     def update  
