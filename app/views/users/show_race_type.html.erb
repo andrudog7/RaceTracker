@@ -1,5 +1,4 @@
 <h1>My <%=@type.name%>'s</h1>
-    <%x = 0%>
     <p>
     <table class = "my_types">
         <thead>
@@ -15,9 +14,9 @@
             </tr>
         </thead>
         <body>
-            <%@type.statistics.ordered.where(:user_id => current_user).each do |stat|%>
+            <%@type.statistics.ordered.where(:user_id => current_user).each_with_index do |stat, index|%>
             <tr>
-                <td><%= x += 1%></td>
+                <td><%=index + 1%></td>
                 <td><%=link_to stat.race.display_name, race_statistics_path(stat.race), style: "text-decoration:none"%></td>
                 <td><%=@type.distance%> miles</td>
                 <td><%=stat.race.location%></td>
