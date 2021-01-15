@@ -5,14 +5,14 @@ class RacesController < ApplicationController
         if params[:filter].present? || params[:date].present?
             if params[:date] == ""
                 if Type.where(:name => params[:filter]) == []
-                    @races = Race.where("location like ? or name like ?", "%#{params[:filter]}%", "%#{params[:filter]}%")
+                    @races = Race.where("location ~* ? or name ~* ?", "#{params[:filter]}", "#{params[:filter]}")
                 else
                     @races = Type.where(:name => params[:filter]).first.races
                 end
             else
                 if params[:filter] != ""
                     if Type.where(:name => params[:filter]) == []
-                        @races = Race.where("(date = ?) and (location like ? or name like ?)", Date.parse(params[:date]), "%#{params[:filter]}%", "%#{params[:filter]}%") 
+                        @races = Race.where("(date = ?) and (location ~* ? or name ~* ?)", Date.parse(params[:date]), "#{params[:filter]}", "#{params[:filter]}") 
                     else
                         @races = Type.where(:name => "Marathon").first.races.where("date = ?", Date.parse(params[:date]))
                     end
@@ -39,29 +39,28 @@ class RacesController < ApplicationController
     end
 
     def create
-            @race = Race.find_by(:name => race_params[:name])
-            if @race 
-                redirect_to race_statistics_path(@race)
-            else
-            @race = Race.new(race_params)
-            @race.owner = current_user
-            if @race.save 
-                if @race.statistics == []
-                    statistic = Statistic.new(finish_time: race_params[:statistic][:finish_time], finish_pace: race_params[:statistic][:finish_pace], public: race_params[:statistic][:public], user_id: current_user.id)
-                    @race.statistics << statistic
-                    if @race.save
-                        redirect_to race_statistics_path(@race)
-                    else
-                        render 'new'
-                    end
-                else
-                    redirect_to race_statistics_path(@race) 
-                end  
-            else
-                redirect_to '/'
-            end
+        @race = Race.find_by(:name => race_params[:name], :date => race_params[:date])
+        if @race 
+            flash[:message] = "This race has already been created!"
+            redirect_to race_statistics_path(@race)
+        else
+        @race = Race.new(race_params)
+        @race.owner = current_user
         end
-    end
+        if @race.save 
+            if @race.statistics == []
+                statistic = Statistic.new(finish_time: race_params[:statistic][:finish_time], finish_pace: race_params[:statistic][:finish_pace], public: race_params[:statistic][:public], user_id: current_user.id)
+                @race.statistics << statistic
+                if @race.save
+                    redirect_to race_statistics_path(@race)
+                else
+                    redirect_to edit_race_statistic_path(@race)
+                end
+            end  
+        else
+            render 'new'
+        end
+end
 
     def show 
         @race = Race.find(params[:id])
@@ -88,7 +87,11 @@ class RacesController < ApplicationController
             s.save 
         end
         race.update(race_params)
-        redirect_to race_statistics_path(race)
+        if race.valide?
+            redirect_to race_statistics_path(race)
+        else
+            render 'edit'
+        end
     end
 
     private 

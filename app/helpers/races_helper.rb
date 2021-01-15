@@ -50,7 +50,7 @@ module RacesHelper
     end
 
     def submit_button_text(race)
-        if race.owner == nil
+        if race.id == nil
             "Create Race"
         else
             "Update Race"

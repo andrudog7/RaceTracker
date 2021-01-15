@@ -18,7 +18,7 @@
             <%@type.statistics.ordered.where(:user_id => current_user).each do |stat|%>
             <tr>
                 <td><%= x += 1%></td>
-                <td><%=link_to stat.race.name, race_statistics_path(stat.race), style: "text-decoration:none"%></td>
+                <td><%=link_to stat.race.display_name, race_statistics_path(stat.race), style: "text-decoration:none"%></td>
                 <td><%=@type.distance%> miles</td>
                 <td><%=stat.race.location%></td>
                 <td><%=stat.race.date_format%></td>

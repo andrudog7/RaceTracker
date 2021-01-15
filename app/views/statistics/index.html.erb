@@ -1,14 +1,15 @@
+<%= flash[:message]%>
 <div class="race_stats", style="padding-left: 20px">
-<h1><%=@race.name%> Stats</h1>
-<ul style="list-style-type:none;padding:0px">
+<h1 style="margin: 15px 0px 5px 0px"><%=@race.display_name%> Stats</h1>
+<div>Total Finishers: <%=@race.statistics.count%></div>
+<ul style="list-style-type:none;padding:0px;margin-top:10px">
     <li>Location: <%=@race.location%></li>
     <li>Date: <%=@race.date_format%></li>
     <li>Type: <%=@race.type.name%></li>
-    <li>Total Finishers: <%=@race.statistics.count%></li>
 </ul>
     <table class = "finisher_stats">
         <thead>
-        <caption><h3 style="text-align: center">Finisher Stats</h3></caption>
+        <caption><h3 style="text-align: center;margin-top:0px">Finisher Stats</h3></caption>
             <tr>
                 <th></th>
                 <th>Name</th>

@@ -1,5 +1,5 @@
 <%if @races%>
-    <%@races.each do |race|%>
+    <%@races.order(created_at: :desc).each do |race|%>
     <h4 class="race_link", style="margin: 10px 0px 0px 0px"><%=link_to race.display_name, race_statistics_path(race)%></h4>
     Finishers: <%=race.statistics.count%> 
     <%end%>

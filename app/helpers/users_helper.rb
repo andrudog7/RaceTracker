@@ -22,7 +22,7 @@ module UsersHelper
 
     def fastest_race_finish_time(type)
         if user_races_of_type(type) != []
-            user_races_of_type(type).statistics.ordered.first.finish_time_format
+            user_races_of_type(type).statistics.ordered.where(:user => current_user).first.finish_time_format
         else 
             "Not Yet Available"
         end
@@ -30,7 +30,7 @@ module UsersHelper
 
     def fastest_race_finish_pace(type)
         if user_races_of_type(type) != []
-            user_races_of_type(type).statistics.ordered.first.finish_pace_format
+            user_races_of_type(type).statistics.ordered.where(:user => current_user).first.finish_pace_format
         else 
             "Not Yet Available"
         end
@@ -38,7 +38,7 @@ module UsersHelper
 
     def fastest_race_name(type)
         if user_races_of_type(type) != []
-            user_races_of_type(type).statistics.ordered.first.race.name
+            user_races_of_type(type).statistics.ordered.where(:user => current_user).first.race.name
         else 
             "Not Yet Available"
         end

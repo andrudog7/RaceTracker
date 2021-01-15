@@ -3,9 +3,7 @@ class Race < ApplicationRecord
     has_many :users, through: :statistics
     belongs_to :type
     belongs_to :owner, :class_name => "User"
-    #accepts_nested_attributes_for :type
-    #accepts_nested_attributes_for :statistics
-    validates :name, uniqueness: true 
+    validates_uniqueness_of :name, scope: :date
 
     def type_attributes=(attr)
         if attr["name"].present? && attr["distance"].present?

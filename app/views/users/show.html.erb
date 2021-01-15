@@ -13,7 +13,8 @@
     <div style="padding:5px">and/or</div>
     <%= label_tag("date:", nil, style:"width: 80px") %>
     <%= date_field_tag('date') %>
-    <div class="button", style="padding-top:20px"><%= submit_tag("Search") %></div><br>
+    <div class="button", style="padding-top:20px"><%= submit_tag("Search")%> <%=link_to "New Race", new_race_path%></div>
+    <div class="button", style="padding-top:20;"></div><br>
     <% end %>
     <%=render '/races/public_races'%>
     </div>
