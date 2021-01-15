@@ -9,7 +9,7 @@ class Race < ApplicationRecord
 
     def type_attributes=(attr)
         if attr["name"].present? && attr["distance"].present?
-            self.type = Type.find_or_create_by(attr)
+            self.type = Type.find_or_create_by(:name => attr["name"], :distance => attr["distance"])
         else
             self.type = Type.find(attr["id"])
             self.save 
