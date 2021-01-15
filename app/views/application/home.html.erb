@@ -1,12 +1,11 @@
-<div class="home_header">
-    <h1>Welcome to RACETRACKER!</h1>
+<div class="home_header", style="padding-left:20px">
+    <h1 style="text-align:center">Welcome to RACETRACKER!</h1>
 </div>
 
 <%= flash[:message]%>
 
 <div class="public_races"></div>
-    <div class="public_races_title"><h3>Recently Added Races</h3></div>
-    <div class="public_race_listing">
+    <div class="public_race_listing", style="padding-left:20px">
         <ul>
         <%=render 'races/public_races'%>
         </li>

@@ -88,7 +88,7 @@ class RacesController < ApplicationController
             s.save 
         end
         race.update(race_params)
-        redirect_to race_path(race)
+        redirect_to race_statistics_path(race)
     end
 
     private 

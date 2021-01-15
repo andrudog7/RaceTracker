@@ -1,14 +1,14 @@
 <h1>Login below</h1>
 <div class="login_form">
     <%= form_with url: "/login", method: :post do |form| %>
-        <%= form.label :email %>
+        <%= form.label :email, "Email:" %>
         <%= form.email_field :email %><br>
-        <%= form.label :password %>
-        <%= form.password_field :password %>
-        <%= form.submit "Login" %>
+        <%= form.label :password, "Password:" %>
+        <%= form.password_field :password %><br>
+        <div class="button", style="padding-top:5px"><%= form.submit "Login"%></div>
     <% end %>
 </div><br><br>
 <h1>Sign in with Google</h1>
-<div id="google_login_buton">
+<div class="button">
     <%=button_to "Google Login", '/auth/google_oauth2'%>
 </div>

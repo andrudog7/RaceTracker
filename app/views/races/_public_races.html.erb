@@ -1,16 +1,14 @@
 <%if @races%>
     <%@races.each do |race|%>
-    <h4 class="race_link"><%=link_to race.name, race_statistics_path(race)%></h4>
-    <%=race.type.name%><br>
-    <%=race.date_format%><br>
-    <%=race.type.distance%><br>
+    <h4 class="race_link", style="margin: 10px 0px 0px 0px"><%=link_to race.display_name, race_statistics_path(race)%></h4>
+    Finishers: <%=race.statistics.count%> 
     <%end%>
 <%else%>
 <h3>Recent Races</h3>
 <%public_races.each do |race|%>
-    <h4 class="race_link"><%=link_to race.name, race_statistics_path(race)%></h4>
-    <%=race.type.name%><br>
-    <%=race.date_format%><br>
-    <%=race.type.distance%><br>
+    <h4 class="race_link" style="text-align:left"><%=link_to race.display_name, race_statistics_path(race)%></h4>
+    Type: <%=race.type.name%><br>
+    Date: <%=race.date_format%><br>
+    Total Finishers: <%=race.statistics.count%>
 <%end%>
 <%end%>

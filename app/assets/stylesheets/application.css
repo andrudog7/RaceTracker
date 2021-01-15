@@ -23,11 +23,11 @@
      position: fixed;
      left: 0px;
      top: 0px;
-     background-color: black;
-     border: 1px solid black;
+     background-color: rgb(255, 255, 113);
+     border: 1px solid rgb(255, 255, 113);
 }
 .dropdown_btn {
-    background-color: black;
+    background-color: rgb(255, 255, 113);
     outline: none;
     border: none;
 }
@@ -38,12 +38,12 @@
     display: block;
     text-align: center;
     height: 25px;
-    width: 110px;
+    width: 120px;
     position: relative;
     left: -40px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
-    color: orange;
+    color: rgb(0, 5, 143);
 }
 
 .menu_bar li:first-child img {
@@ -63,7 +63,7 @@
   }
 
 .menu_bar li a {
-    color: orange;
+    color: rgb(0, 5, 143);
     text-decoration: none;
     text-align: center;
     width: 100%;
@@ -84,7 +84,7 @@
 .dropdown_container li {
     position: relative;
     left: -80px;
-    background-color: rgb(63, 61, 57);
+    background-color: rgb(179, 178, 177);
   }
 .dropdown_container li:first-child {
     height: 25px;
@@ -111,13 +111,27 @@
 div.button a, div.button input {
         background-color: white;
         border: 3px solid black;
-        border-color:orange;
+        border-color:rgb(0, 5, 143);
         color: black;
         padding: 6px 15px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
       }
 div.button a:hover, a:visited, div.button input:hover {
     background-color: orange;
+}
+
+/*Form Formatting*/
+
+label {
+    width: 130px;
+    display: inline-block;
+    padding: 3px;
+  }
+
+.race_link a {
+    text-decoration: none;
 }

@@ -1,9 +1,9 @@
 <%=form_with(model: @race) do |f|%>
-    <%=f.label :name, "Race Name"%>
+    <%=f.label :name, "Name:"%>
     <%=f.text_field :name%><br><br>
-    <%=f.label :location, "Race Location"%>
+    <%=f.label :location, "Location:"%>
     <%=f.text_field :location%><br><br>
-    <%=f.label :date, "Race Date"%>
+    <%=f.label :date, "Date:"%>
     <%=f.date_field :date%><br><br>
     <%=f.fields_for :type, @race.type do |t|%>
         <%if @race.type.name == nil%>
@@ -15,8 +15,8 @@
         <%=t.label :distance, "Distance (in miles)"%>
         <%=t.text_field :distance%><br><br>
         <%else%>
-        <h4>Race Type</h4>
         <%=t.hidden_field :id%>
+        <%=t.label "Type:"%>
         <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, {:prompt => true, :selected => @race.type.id}%><br><br>
         <%end%>
     <%end%>
@@ -36,7 +36,7 @@
         <%=s.check_box :public%><br><br>
         <%end%>
     <div class="button"><%=f.submit submit_button_text(@race)%></div>
-        <%if @race.type.id != nil%>
-        <div class="button"><%=link_to "Delete My Statistic", statistic_path(current_user_stats_for_form(@race)), :method => 'delete'%></div>
+        <%if current_user_stats_for_form(@race).id != nil%>
+        <div class="button", style="padding-top:15px"><%=link_to "Delete My Statistic", statistic_path(current_user_stats_for_form(@race)), :method => 'delete'%></div>
         <%end%>
 <%end%>

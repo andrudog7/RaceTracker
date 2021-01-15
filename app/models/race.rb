@@ -33,4 +33,8 @@ class Race < ApplicationRecord
     def date_format
         self.date.strftime("%A %B %d, %Y")
     end
+
+    def display_name
+        self.name + " " + self.date.strftime("%Y")
+    end
 end

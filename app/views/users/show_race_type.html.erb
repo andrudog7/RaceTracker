@@ -1,12 +1,30 @@
 <h1>My <%=@type.name%>'s</h1>
-<p><%@type.statistics.ordered.where(:user_id => current_user).each do |stat|%>
-    <ul>
-    <li><h3 class="race_link"><%=link_to stat.race.name, race_statistics_path(stat.race)%></h3></li>
-    <li><%=@type.distance%> miles</li>
-    <li><%=stat.race.location%></li>
-    <li><%=stat.race.date_format%></li>
-    <li>Finish Time: <%=user_race_stats(stat.race).finish_time_format%></li>
-    <li>Finish Pace: <%=user_race_stats(stat.race).finish_pace_format%></li>
-    </ul>
-    <%end%>
-</p>
+    <%x = 0%>
+    <p><%@type.statistics.ordered.where(:user_id => current_user).each do |stat|%>
+    <table class = "my_types">
+        <thead>
+        <caption><h3 style="text-align: center">Finisher Stats</h3></caption>
+            <tr>
+                <th></th>
+                <th>Race Name</th>
+                <th>Miles</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Finish Time</th>
+                <th>Pace</th>
+            </tr>
+        </thead>
+        <body>
+            <tr>
+                <td><%= x += 1%></td>
+                <td><h3 class="race_link"><%=link_to stat.race.name, race_statistics_path(stat.race)%></h3></td>
+                <td><%=@type.distance%> miles</td>
+                <td><%=stat.race.location%></td>
+                <td><%=stat.race.date_format%></td>
+                <td><%=user_race_stats(stat.race).finish_time_format%></td>
+                <td><%=user_race_stats(stat.race).finish_pace_format%></td>
+            </tr>
+            <%end%>
+        </body>
+    </table>
+    </p>

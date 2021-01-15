@@ -1,11 +1,11 @@
-<h1><%=@type.name%>'s</h1>
+<h1 style="padding-left:20px"><%=@type.name%>'s</h1>
 <ul class="public_races">
     <%Type.public_races(@type.name).each do |race|%>
     <ul class="individual_public_race">
-        <li><h3 class="race_link"><%=link_to race.name, race_path(race)%></h3></li>
-        <li><%=race.location%></li>
-        <li><%=race.type.distance%> miles</li>
-        <li><%=race.users.count%> finishers</li>
+        <li><h3 class="race_link"><%=link_to race.name, race_statistics_path(race)%></h3></li>
+        <li>Location: <%=race.location%></li>
+        <li>Date: <%=race.type.name%></li>
+        <li>Total Finishers: <%=race.users.count%></li>
     </ul>
     <%end%>
     </ul>

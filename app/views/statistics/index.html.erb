@@ -1,13 +1,16 @@
+<div class="race_stats", style="padding-left: 20px">
 <h1><%=@race.name%> Stats</h1>
 <ul style="list-style-type:none;padding:0px">
-    <li><%=@race.location%></li>
-    <li><%=@race.date_format%></li>
-    <li><%=@race.type.distance%> miles</li>
+    <li>Location: <%=@race.location%></li>
+    <li>Date: <%=@race.date_format%></li>
+    <li>Type: <%=@race.type.name%></li>
+    <li>Total Finishers: <%=@race.statistics.count%></li>
 </ul>
     <table class = "finisher_stats">
         <thead>
-        <caption><h3 style="text-align: center">Finishers</h3></caption>
+        <caption><h3 style="text-align: center">Finisher Stats</h3></caption>
             <tr>
+                <th></th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Finish Time</th>
@@ -15,8 +18,10 @@
             </tr>
         </thead>
         <body>
+            <%x = 0%>
             <%public_statistics(@race).each do |stat| %>  
             <tr>
+                <td><%= x += 1%></td>
                 <td><%=stat.user.first_name%> <%=stat.user.last_name%></td>
                 <td><%=stat.user.age%></td>
                 <td><%=stat.finish_time_format%></td>
@@ -30,6 +35,9 @@
 <div class="button"><%=link_to "Edit Race", edit_race_path(@race), method: 'get'%>
 <%elsif @race.users.include?(current_user)%>
 <div class="button"><%=link_to "Edit My Statistic", edit_race_statistic_path(@race.id, current_user_stats(@race).id)%></div>
+<%elsif !logged_in?%>
+<%nil%>
 <%else%>
 <div class="button"><%=link_to "Add My Statistic", new_race_statistic_path(@race)%></div>
 <%end%>
+</div>
