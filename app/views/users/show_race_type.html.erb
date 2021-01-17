@@ -21,8 +21,8 @@
                 <td><%=@type.distance%> miles</td>
                 <td><%=stat.race.location%></td>
                 <td><%=stat.race.date_format%></td>
-                <td><%=user_race_stats(stat.race).finish_time_format%></td>
-                <td><%=user_race_stats(stat.race).finish_pace_format%></td>
+                <td><%=current_user_stats(stat.race).finish_time_format%></td>
+                <td><%=current_user_stats(stat.race).finish_pace_format%></td>
             </tr>
             <%end%>
         </body>

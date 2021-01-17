@@ -4,12 +4,12 @@ module UsersHelper
     ["5k", "10k", "Half-Marathon", "Marathon"]
     end
 
+    def find_type(type)
+        Type.find_by(:name => type)
+    end
+
     def user_race_count_of_type(type)
-        if user_races_of_type(type) != []
-            current_user.races.where(:type => user_races_of_type(type)).count
-        else
-            "0"
-        end
+        current_user.races.where(:type => user_races_of_type(type)).count
     end
 
     def user_races_of_type(type)
@@ -42,9 +42,5 @@ module UsersHelper
         else 
             "Not Yet Available"
         end
-    end
-
-    def user_race_stats(race)
-        race.statistics.where(:user => current_user).first
     end
 end

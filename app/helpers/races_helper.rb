@@ -72,4 +72,12 @@ module RacesHelper
             'put'
         end
     end
+
+    def race_form_text(race)
+        if race.type.id == nil
+            content_tag(:h4, "Add Your Finisher Stats", :style => "text-align:left")
+        else
+            content_tag(:h4, "Update Your Finisher Stats", :style => "text-align:left")
+        end
+    end
 end

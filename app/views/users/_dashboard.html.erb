@@ -2,7 +2,7 @@
     <div id="dashboard"><h2>My Racing Dashboard</h2></div>
     <div id="race_types">
         <%dashboard.each do |type|%>
-            <div id=<%=type%>><h4><%=type%></h4>
+            <div id=<%=type%>><h4><%=link_to type, type_path(find_type(type))%></h4>
                 <ul>
                 <li>Completed <%=type.pluralize%></li>
                 <li><%=user_race_count_of_type(type)%></li><br>
