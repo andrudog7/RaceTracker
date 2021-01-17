@@ -7,9 +7,5 @@ class Type < ApplicationRecord
 
     scope :ordered, -> do
         joins(:statistic).merge(Statistic.ordered)
-      end
-
-    def self.public_races(type)
-        self.all.where(:name => type).first.races.select{|race| race.public == true}
     end
 end

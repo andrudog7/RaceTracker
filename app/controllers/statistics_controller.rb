@@ -1,4 +1,5 @@
 class StatisticsController < ApplicationController
+  before_action :require_logged_in, only: [:new, :create, :edit, :update, :destroy]
   def new
     if params[:race_id]
       @race = Race.find(params[:race_id])

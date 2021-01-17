@@ -7,10 +7,10 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true
     validates :first_name, :last_name, presence: true, format: { with: /\A\D+\z/,
         message: "cannot contain numbers" }
-    # validates :last_name, presence: true
+    validates :last_name, presence: true
     validates :password, confirmation: true
     validates :password_confirmation, presence: true, unless: Proc.new { |a| a.UID.present?}
-    #validates :age, numericality: { less_than: 100, greater_than: 0, message: "must be a number between 1 and 99"}
+    validates :age, numericality: { less_than: 100, greater_than: 0, message: "must be a number between 1 and 99"}, unless: Proc.new { |a| a.UID.present?}
 
     def self.create_from_omniauth(auth)
         user = self.find_or_create_by(UID: auth['uid'], provider: auth['provider']) do |u|
@@ -30,7 +30,4 @@ class User < ApplicationRecord
         end
         count * distance
     end
-
-    
-
 end

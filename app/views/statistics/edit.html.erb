@@ -1,8 +1,5 @@
 <h1>Edit Your Statistic</h1>
-<%=@race.name%><br>
-    <%=@race.location%><br>
-    <%=@race.date_format%><br>
-    <%=@race.type.name%><br><br>
+    <%= render 'races/race_view'%>
     <h4 style="text-align:left">Update Your Stats</h4>
     <%=render 'form'%>
-    <div class="button", style="padding-top:10px"><%=link_to "Delete My Statistic", statistic_path(current_user_stats_for_form(@race)), :method => 'delete'%></div>
+    <div class="button", style="padding-top:10px"><%=link_to "Delete My Stats", statistic_path(current_user_stats_for_form(@race)), :method => 'delete'%></div>

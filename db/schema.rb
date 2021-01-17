@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_173053) do
+ActiveRecord::Schema.define(version: 2021_01_17_171723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_173053) do
   create_table "statistics", force: :cascade do |t|
     t.time "finish_time"
     t.time "finish_pace"
-    t.boolean "public"
+    t.boolean "public", default: true
     t.bigint "race_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false

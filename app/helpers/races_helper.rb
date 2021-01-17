@@ -1,6 +1,6 @@
 module RacesHelper
     def public_races
-        Race.all.where(:public => "true").order(:created_at).reverse_order.limit(6)
+        Race.all.order(:created_at).reverse_order.limit(6)
     end
 
     def public_statistics(race)

@@ -8,17 +8,17 @@
     <%=f.date_field :date%><br><br>
     <%=f.fields_for :type, @race.type do |t|%>
         <%if @race.type.name == nil%>
-        <%=t.label nil, "Select Type:"%>
-        <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, :prompt => 'Select Type'%><br>
-        <h4 style="text-align:left">Or Add a New Race Type:</h4>
-        <%=t.label :name, "Name (ex. 4 Miler):"%>
-        <%=t.text_field :name%><br>
-        <%=t.label :distance, "Distance (in miles):"%>
-        <%=t.text_field :distance%><br><br>
+            <%=t.label nil, "Select Type:"%>
+            <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, :prompt => 'Select Type'%><br>
+            <h4 style="text-align:left">Or Add a New Race Type:</h4>
+            <%=t.label :name, "Name (ex. 4 Miler):"%>
+            <%=t.text_field :name%><br>
+            <%=t.label :distance, "Distance (in miles):"%>
+            <%=t.text_field :distance%><br><br>
         <%else%>
-        <%=t.hidden_field :id%>
-        <%=t.label "Type:"%>
-        <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, {:prompt => true, :selected => @race.type.id}%><br><br>
+            <%=t.hidden_field :id%>
+            <%=t.label "Type:"%>
+            <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, {:prompt => true, :selected => @race.type.id}%><br><br>
         <%end%>
     <%end%>
     <%=f.hidden_field :public%>
@@ -33,12 +33,12 @@
         <%=s.text_field :finish_time, value: finish_time_value(@race), placeholder: "hh:mm:ss", pattern: /\d{2}:[012345][0-9]:[012345][0-9]/%><br>
         <%=s.label :finish_pace, "Finish Pace"%>
         <%=s.text_field :finish_pace, value: finish_pace_value(@race), placeholder: "mm:ss", pattern: "[012345][0-9]:[012345][0-9]"%><br>
-        <%=s.label :public, "Set Stats to Private:"%>
-        <%=s.check_box :public, {}, "false", "true"%><br><br>
-        <%end%>
+        <%=s.label :public, "Stats are public:"%>
+        <%=s.check_box :public%><br><br>
+    <%end%>
     <div class="button"><%=f.submit submit_button_text(@race)%></div>
-        <%if current_user_stats_for_form(@race).id != nil && @race.id != nil%>
+    <%if current_user_stats_for_form(@race).id != nil && @race.id != nil%>
         <div class="button", style="padding-top:15px"><%=link_to "Delete My Statistic", statistic_path(current_user_stats_for_form(@race)), :method => 'delete'%></div>
-        <%end%>
+    <%end%>
 <%end%>
 </div>

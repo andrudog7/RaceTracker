@@ -1,25 +1,9 @@
 <%if @statistic.user_id == nil%>
 <%=form_with(model: @statistic, url: race_statistics_path(@statistic.race), method: 'post') do |f|%>
-        <%=f.hidden_field :id%>
-        <%=f.label :finish_time, "Finish Time"%>
-        <%=f.text_field :finish_time, value: finish_time_value(@race), placeholder: "hh:mm:ss", pattern: /\d{2}:[012345][0-9]:[012345][0-9]/%><br>
-        <%=f.label :finish_pace, "Finish Pace"%>
-        <%=f.text_field :finish_pace, value: finish_pace_value(@race), placeholder: "mm:ss", pattern: "[012345][0-9]:[012345][0-9]"%><br><br>
-        <%=f.label :public, "Allow other users to see your finish stats (if race is public)"%>
-        <%=f.check_box :public%><br><br>
-        <%=f.hidden_field :id%>
-        <%=f.submit "Add Stats"%>
-        <%end%>
+    <%=render 'form_partial', f:f%>
+    <%end%>
 <%else%>
-<%=form_with(model: @statistic, url: statistic_path(@statistic), method: 'put') do |f|%>
-        <%=f.hidden_field :id%>
-        <%=f.label :finish_time, "Finish Time"%>
-        <%=f.text_field :finish_time, value: finish_time_value(@race), placeholder: "hh:mm:ss", pattern: /\d{2}:[012345][0-9]:[012345][0-9]/%><br>
-        <%=f.label :finish_pace, "Finish Pace"%>
-        <%=f.text_field :finish_pace, value: finish_pace_value(@race), placeholder: "mm:ss", pattern: "[012345][0-9]:[012345][0-9]"%><br><br>
-        <%=f.label :public, "Set Stats to Private:"%>
-        <%=f.check_box :public, {}, "false", "true"%><br><br>
-        <%=f.hidden_field :id%>
-        <div class="button", style="padding-top:10px"><%=f.submit "Update Stats"%></div>
-        <%end%>
+<%=form_with(model: @statistic) do |f|%>
+    <%=render 'form_partial', f:f%>
+    <%end%>
 <%end%> 

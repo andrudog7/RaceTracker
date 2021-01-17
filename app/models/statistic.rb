@@ -5,13 +5,13 @@ class Statistic < ApplicationRecord
 
     scope :ordered, -> do
         order(finish_time: :asc)
-      end
+    end
 
     def finish_time_format
         self.finish_time.strftime("%H:%M:%S")
-      end
+    end
 
-      def finish_pace_format
+    def finish_pace_format
         self.finish_pace.strftime("%H:%M")
-      end
+    end
 end

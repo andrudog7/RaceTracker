@@ -4,7 +4,6 @@
 <% if @race.errors.any? %>
   <div id="error_explanation">
     <h2>Please fix <%= pluralize(@race.errors.count, "error") %> below:</h2>
-
     <ul>
       <% @race.errors.each do |error| %>
         <li><%= error.full_message %></li>

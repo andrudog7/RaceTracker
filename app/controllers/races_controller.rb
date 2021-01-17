@@ -62,9 +62,9 @@ class RacesController < ApplicationController
         end
 end
 
-    def show 
-        @race = Race.find(params[:id])
-    end
+    # def show 
+    #     @race = Race.find(params[:id])
+    # end
 
     def edit 
         @race = Race.find(params[:id])
