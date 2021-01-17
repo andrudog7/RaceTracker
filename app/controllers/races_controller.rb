@@ -29,6 +29,8 @@ class RacesController < ApplicationController
             @races
             render 'users/show'
             end
+        else
+            @races = Race.all.order(:name)
         end
     end
 
