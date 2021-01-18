@@ -16,6 +16,7 @@
                 <th>Age</th>
                 <th>Finish Time</th>
                 <th>Pace</th>
+                <th>Likes</th>
             </tr>
         </thead>
         <body>
@@ -27,6 +28,7 @@
                 <td><%=stat.user.age%></td>
                 <td><%=stat.finish_time_format%></td>
                 <td><%=stat.finish_pace_format%></td>
+                <td><%=stat.likes.count%> <%=current_user_like_link(stat)%></td>
             </tr>
             <%end%>
         </body>

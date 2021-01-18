@@ -8,4 +8,12 @@ module StatisticsHelper
         end
     end
 
+    def current_user_like_link(stat)
+        if stat.likes.where(:user_id => current_user.id) != []
+            link_to "🌟", like_path(stat.likes.where(:user_id => current_user.id).first), class: "button", method: 'put'
+        else
+           link_to "🌟", statistic_likes_path(stat), class: "button", method: 'post'
+        end
+    end
+
 end
