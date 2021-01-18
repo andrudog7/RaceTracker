@@ -4,6 +4,9 @@ class User < ApplicationRecord
     has_many :races, through: :statistics
     has_many :likes, through: :statistics
     has_many :types, through: :races
+    has_many :friendships
+    has_many :friends, through: :friendships
+    has_many :friend_statistics, through: :friendships, :source => :statistics
     validates :email, presence: true, uniqueness: true
     validates :first_name, :last_name, presence: true, format: { with: /\A\D+\z/,
         message: "cannot contain numbers" }
@@ -29,5 +32,9 @@ class User < ApplicationRecord
             distance = 0
         end
         count * distance
+    end
+
+    def current_friends
+        self.friends.where(:friendships => {:friendship => true})
     end
 end

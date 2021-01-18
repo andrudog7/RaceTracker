@@ -32,7 +32,9 @@ module ApplicationHelper
                     @button = button_tag 'My Races', class: "dropdown_btn"
                     @logout = link_to "Logout", '/logout', method: "post"
                     @new_race = link_to "New Race", new_race_path
-                    @dashboard_elements = [@logo, @dashboard, @button, @new_race, @logout]
+                    @all_races = link_to "All Races", races_path
+                    @all_users = link_to "All Users", users_path
+                    @dashboard_elements = [@logo, @dashboard, @button, @new_race, @all_races, @all_users, @logout]
                     
                     create_menu_buttons
                 end

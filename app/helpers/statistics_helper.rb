@@ -15,5 +15,4 @@ module StatisticsHelper
            link_to "🌟", statistic_likes_path(stat), class: "button", method: 'post'
         end
     end
-
 end

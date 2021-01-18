@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#logout'
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
-  resources :users
+  resources :users do 
+    resources :friendships, only: [:create]
+  end
+  resources :friendships, only: [:update]
   resources :statistics, only: [:destroy] do 
       resources :likes, only: [:create]
     end
@@ -15,5 +18,6 @@ Rails.application.routes.draw do
     resources :statistics, only: [:new, :create, :index, :edit, :update] 
   end
   resources :types
+  
   
 end

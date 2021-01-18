@@ -5,6 +5,10 @@ class UsersController < ApplicationController
         @user = User.new 
     end
 
+    def index 
+        @users = User.where("id NOT IN(?)", current_user.id).order(:last_name)
+    end
+
     def create
         user = User.new(user_params)
         if user.save
