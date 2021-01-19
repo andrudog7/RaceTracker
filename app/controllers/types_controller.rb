@@ -15,6 +15,15 @@ class TypesController < ApplicationController
     end
   end
 
+  def show_races
+    @races = Type.find_by_slug(params[:slug_races])
+    if logged_in?
+      render users_show_race_type_path
+    else
+      render 'show_races'
+    end
+  end
+
   private 
 
   def type_params 

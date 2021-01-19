@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
     user = User.create_from_omniauth(auth)
       if user.valid?
         session[:user_id] = user.id
-        flash[:message] = "You have successfully signed in with Google, #{user.first_name}."
+        flash[:message] = "You have successfully signed in with Google, #{user.first_name}.  Don't forget to update your age in your profile."
         redirect_to user_path(user)
       else
         flash[:message] = user.errors.full_messages.join(", ")

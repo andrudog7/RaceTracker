@@ -28,13 +28,13 @@ module ApplicationHelper
         else
             content_tag(:div, class: "menu_bar") do 
                 content_tag(:ul) do
+                    @profile = link_to "My Profile", edit_user_path(current_user)
                     @dashboard = link_to "My Dashboard", user_path(current_user)
                     @button = button_tag 'My Races', class: "dropdown_btn"
                     @logout = link_to "Logout", '/logout', method: "post"
-                    @new_race = link_to "New Race", new_race_path
                     @all_races = link_to "All Races", races_path
-                    @all_users = link_to "All Users", users_path
-                    @dashboard_elements = [@logo, @dashboard, @button, @new_race, @all_races, @all_users, @logout]
+                    @all_users = link_to "Runners", users_path
+                    @dashboard_elements = [@logo, @profile, @dashboard, @button, @all_races, @all_users, @logout]
                     
                     create_menu_buttons
                 end
@@ -72,6 +72,10 @@ module ApplicationHelper
     end
 
     def type_links(type)
-        link_to type.name, type_path(type)        
+        if logged_in?
+            link_to type.name, type_path(type) 
+        else
+            link_to type.name, "/types/#{type.slug}_races", method: 'get'  
+        end   
     end
 end

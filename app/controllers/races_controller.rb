@@ -12,7 +12,7 @@ class RacesController < ApplicationController
                 render 'users/show'
             end
         else
-            @races = Race.all.order(:name)
+            @races = Race.recent_races
         end
     end
 

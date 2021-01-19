@@ -7,7 +7,7 @@
     <%end%>
     <div class="column_two">
         <div class="race_search">
-        <h2 style="text-align:center">Find A Race</h2>
+        <h2 style="text-align:center">Find or Create A Race</h2><br>
         <%= form_tag(races_path, method:"get") do |f| %>
             <%= label_tag("Search by:", nil, style:"width: 100px") %>
             <%= text_field_tag('filter', nil, placeholder: "Name/City/Location", style: "display:-webkit-inline-flex") %>
@@ -22,7 +22,7 @@
         <%end%>
         </div>
         <div class="friends">
-            <h2 style="text-align:center; padding-top:20px">Friend Activity</h2>
+            <h2 style="text-align:center">Friend Activity</h2><br>
             <%if @races%>
                 <%=render 'users/friends_table'%>
             <%else%>

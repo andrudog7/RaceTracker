@@ -45,7 +45,7 @@ module UsersHelper
     end
 
     def recent_friend_statistics(user)
-        user.friend_statistics.order(created_at: :desc).limit(10)
+        user.friend_statistics.order(created_at: :desc).where(:public => true).limit(10)
     end
 
     def friend_link(user)

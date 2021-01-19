@@ -2,7 +2,7 @@
   <h1>Create Profile</h1>
   <% if @user.errors.any? %>
   <div id="error_explanation">
-    <h2>Please fix <%= pluralize(@user.errors.count, "error") %> below:</h2>
+    <h3>Please fix <%= pluralize(@user.errors.count, "error") %> below:</h3>
     <ul>
       <% @user.errors.each do |error| %>
         <li><%= error.full_message %></li>
