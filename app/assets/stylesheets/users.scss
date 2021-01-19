@@ -42,7 +42,7 @@ h4{
 }
 
 .column_two {
-    grid-template-rows: 7rem 7rem;
+    grid-template-rows: auto auto;
     align-items: center;
     justify-items: center;
     display: inline;
@@ -50,18 +50,20 @@ h4{
     border-style: solid;
     border-width: 2px;
 }
-.race_search {
-    float: left;
-    width: 95%;
-    display: block;
-    margin: none;
-    text-align: center;
-}
 
-.friends {
+.race_search {
+    text-align: center;
     border-bottom-style: solid;
     border-bottom-width: 2px;
     padding-bottom: 20px;
+}
+
+.friends {
+    float: left;
+    display: block;
+    width: 100%;
+    margin: none;
+    text-align: center;
 }
 
 .friend_stats {

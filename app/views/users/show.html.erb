@@ -6,10 +6,6 @@
         <%=render 'dashboard'%>
     <%end%>
     <div class="column_two">
-        <div class="friends">
-            <h2 style="text-align:center">Friends Recent Activity</h2>
-            <%=render 'friends_table'%>
-        </div>
         <div class="race_search">
         <h2 style="text-align:center">Find A Race</h2>
         <%= form_tag(races_path, method:"get") do |f| %>
@@ -24,6 +20,14 @@
         <%if @races%>
             <%=render '/races/public_races'%>
         <%end%>
+        </div>
+        <div class="friends">
+            <h2 style="text-align:center; padding-top:20px">Friend Activity</h2>
+            <%if @races%>
+                <%=render 'users/friends_table'%>
+            <%else%>
+                <%=render 'friends_table'%>
+            <%end%>
         </div>
     </div>
 </div>

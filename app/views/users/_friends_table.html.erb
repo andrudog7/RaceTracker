@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <body>
-            <%recent_friend_statistics(@user).each do |stat|%>
+            <%recent_friend_statistics(current_user).each do |stat|%>
             <tr>
                 <td><%=stat.user.first_name%> <%=stat.user.last_name%></td>
                 <td><%=link_to stat.race.display_name, race_statistics_path(stat.race), style: "text-decoration:none"%></td>

@@ -2,9 +2,7 @@ class LikesController < ApplicationController
     before_action :require_logged_in, only: [:create, :update]
 
     def create
-        like = Like.new(:user_id => current_user.id)
-        like.statistic_id = params[:statistic_id]
-        like.like = true 
+        like = Like.new(:user_id => current_user.id, :statistic_id => params[:statistic_id], :like => true)
         like.save
         redirect_to race_statistics_path(like.statistic.race)
     end

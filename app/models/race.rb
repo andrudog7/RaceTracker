@@ -35,4 +35,27 @@ class Race < ApplicationRecord
     def display_name
         self.name + " " + self.date.strftime("%Y")
     end
+
+    def self.search_races(params)
+        if params[:date] == ""
+            if Type.where(:name => params[:filter]) == []
+                @races = self.where("location ~* ? or name ~* ?", "#{params[:filter]}", "#{params[:filter]}")
+            else
+                @races = Type.where(:name => params[:filter]).first.races
+            end
+        else
+            if params[:filter] != ""
+                if Type.where(:name => params[:filter]) == []
+                    @races = self.where("(date = ?) and (location ~* ? or name ~* ?)", Date.parse(params[:date]), "#{params[:filter]}", "#{params[:filter]}") 
+                else
+                    @races = Type.where(:name => "Marathon").first.races.where("date = ?", Date.parse(params[:date]))
+                end
+            elsif params[:filter] == ""
+                @races = self.where("date = ?", Date.parse(params[:date]))
+            else
+                @races = Type.where(:name => params[:filter]).first.races
+            end
+        end
+        @races
+    end
 end

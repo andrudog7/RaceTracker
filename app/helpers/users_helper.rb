@@ -50,9 +50,9 @@ module UsersHelper
 
     def friend_link(user)
         if current_user.current_friends.include?(user)
-            link_to "Remove Friend", friendship_path(current_user.friendships.where(:friend_id => user.id).first), method: 'put'
+            link_to "Unfollow", friendship_path(current_user.friendships.where(:friend_id => user.id).first), method: 'put'
         else
-            link_to "Add Friend", user_friendships_path(user), method: 'post'
+            link_to "Follow", user_friendships_path(user), method: 'post'
         end
     end
 end
