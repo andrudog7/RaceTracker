@@ -4,7 +4,7 @@
         <%dashboard.each do |type|%>
             <div id=<%=type%> style="padding:10px;border-radius:10px;border:1px solid;background-color:white"><h4><%=link_to type, type_path(find_type(type))%></h4>
                 <ul>
-                <li style="font-weight:bold">Completed <%=type.pluralize%></li>
+                <li style="font-weight:bold">Finished</li>
                 <li><%=user_race_count_of_type(type)%></li><br>
                 <li style="font-weight:bold">Total Miles</li>
                 <li><%=current_user.total_race_type_distance(type)%></li><br>

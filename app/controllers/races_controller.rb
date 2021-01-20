@@ -12,7 +12,7 @@ class RacesController < ApplicationController
                 render 'users/show'
             end
         else
-            @races = Race.recent_races
+            @races = Race.all.order(date: :desc)
         end
     end
 

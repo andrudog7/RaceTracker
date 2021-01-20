@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#logout'
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
   resources :users do 
-    resources :friendships, only: [:create]
+    resources :friendships, only: [:create, :index, :show]
   end
   resources :friendships, only: [:update]
   resources :statistics, only: [:destroy] do 

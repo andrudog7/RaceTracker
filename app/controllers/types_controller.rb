@@ -9,7 +9,7 @@ class TypesController < ApplicationController
   def show
     @type = Type.find(params[:id])
     if logged_in?
-      render users_show_race_type_path
+      render 'users/show_race_type'
     else
       render 'show'
     end

@@ -42,6 +42,7 @@ class UsersController < ApplicationController
     end
 
     def show_race_type
+        @type = Type.find(params[:format])
     end
 
     private 

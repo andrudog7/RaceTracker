@@ -31,10 +31,11 @@ module ApplicationHelper
                     @profile = link_to "My Profile", edit_user_path(current_user)
                     @dashboard = link_to "My Dashboard", user_path(current_user)
                     @button = button_tag 'My Races', class: "dropdown_btn"
+                    @friends = link_to "Following", user_friendships_path(current_user)
                     @logout = link_to "Logout", '/logout', method: "post"
                     @all_races = link_to "All Races", races_path
                     @all_users = link_to "Runners", users_path
-                    @dashboard_elements = [@logo, @profile, @dashboard, @button, @all_races, @all_users, @logout]
+                    @dashboard_elements = [@logo, @profile, @dashboard, @friends, @button, @all_races, @all_users, @logout]
                     
                     create_menu_buttons
                 end
@@ -73,7 +74,7 @@ module ApplicationHelper
 
     def type_links(type)
         if logged_in?
-            link_to type.name, type_path(type) 
+            link_to type.name, users_show_race_type_path(type) 
         else
             link_to type.name, "/types/#{type.slug}_races", method: 'get'  
         end   

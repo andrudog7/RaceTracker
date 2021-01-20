@@ -1,0 +1,33 @@
+<div style="padding-left: 20px">
+<h1><%=@friend.first_name%> <%=@friend.last_name%>'s Public Statistics</h1>
+    <table class = "finisher_stats">
+        <thead>
+        <caption><h3 style="text-align: center;margin-top:0px">Finisher Stats</h3></caption>
+            <tr>
+                <th></th>
+                <th>Race Name</th>
+                <th>Race Date</th>
+                <th>Race Location</th>
+                <th>Age</th>
+                <th>Finish Time</th>
+                <th>Pace</th>
+                <th>Likes</th>
+            </tr>
+        </thead>
+        <body>
+            <%x = 0%>
+            <%friend_statistics(@friend).each do |stat|%>
+            <tr>
+                <td><%= x += 1%></td>
+                <td><%=stat.race.name%></td>
+                <td><%=stat.race.date_format%></td>
+                <td><%=stat.race.location%></td>
+                <td><%=stat.user.age%></td>
+                <td><%=stat.finish_time_format%></td>
+                <td><%=stat.finish_pace_format%></td>
+                <td><%=stat.likes.count%> <%=like_link_from_friend_page(stat)%></td>
+            </tr>
+            <%end%>
+        </body>
+    </table>
+</div>

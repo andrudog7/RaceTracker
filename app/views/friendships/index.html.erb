@@ -1,0 +1,6 @@
+<div style="padding-left: 20px">
+<h1>My Friends</h1>
+<%@friends.each do |friend|%>
+<p><%=link_to "#{friend.first_name} #{friend.last_name}", user_friendship_path(current_user, friend)%> - <%=friend_link(friend)%><br></p>
+<%end%>
+</div>

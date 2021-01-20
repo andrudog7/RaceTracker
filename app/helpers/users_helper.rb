@@ -44,13 +44,17 @@ module UsersHelper
         end
     end
 
-    def recent_friend_statistics(user)
-        user.friend_statistics.order(created_at: :desc).where(:public => true).limit(10)
+    def friend_link_text(user)
+        if current_user.friendships.where(:friend_id => user.id).first.friendship == true 
+            "Unfollow"
+        else
+            "Follow"
+        end
     end
 
     def friend_link(user)
-        if current_user.current_friends.include?(user)
-            link_to "Unfollow", friendship_path(current_user.friendships.where(:friend_id => user.id).first), method: 'put'
+        if current_user.friendships.where(:friend_id => user.id) != []
+            link_to friend_link_text(user), friendship_path(current_user.friendships.where(:friend_id => user.id).first), method: 'put'
         else
             link_to "Follow", user_friendships_path(user), method: 'post'
         end

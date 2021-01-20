@@ -1,15 +1,15 @@
 <div style="padding-left:20px">
 <%=form_with(model: @race) do |f|%>
     <%=f.label :name, "Name:"%>
-    <%=f.text_field :name%><br><br>
+    <%=f.text_field :name%><br>
     <%=f.label :location, "Location:"%>
-    <%=f.text_field :location%><br><br>
+    <%=f.text_field :location%><br>
     <%=f.label :date, "Date:"%>
-    <%=f.date_field :date%><br><br>
+    <%=f.date_field :date%><br>
     <%=f.fields_for :type, @race.type do |t|%>
         <%if @race.type.name == nil%>
             <%=t.label nil, "Select Type:"%>
-            <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, :prompt => 'Select Type'%><br>
+            <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, :prompt => 'Select Type'%><br><br>
             <h4 style="text-align:left">Or Add a New Race Type:</h4>
             <%=t.label :name, "Name (ex. 4 Miler):"%>
             <%=t.text_field :name%><br>

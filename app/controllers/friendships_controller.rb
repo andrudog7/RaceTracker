@@ -1,5 +1,13 @@
 class FriendshipsController < ApplicationController
-    before_action :require_logged_in, only: [:create, :update]
+    before_action :require_logged_in, only: [:create, :update, :index]
+
+    def index 
+        @friends = current_user.friends.sort_by{|friend|friend.last_name}
+    end
+
+    def show 
+        @friend = User.find(params[:id])
+    end
 
     def create 
         friend = Friendship.new(:user_id => current_user.id, :friend_id => params[:user_id], :friendship => true)

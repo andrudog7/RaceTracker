@@ -10,13 +10,13 @@
             </tr>
         </thead>
         <body>
-            <%recent_friend_statistics(current_user).each do |stat|%>
+            <%recent_friend_statistics.each do |stat|%>
             <tr>
                 <td><%=stat.user.first_name%> <%=stat.user.last_name%></td>
                 <td><%=link_to stat.race.display_name, race_statistics_path(stat.race), style: "text-decoration:none"%></td>
                 <td><%=stat.race.date.strftime("%b %d")%></td>
                 <td><%=stat.finish_time_format%></td>
-                <td><%=stat.likes.count%> <%=current_user_like_link(stat)%></td>
+                <td><%=stat.likes.count%> <%=like_link_from_dashboard(stat)%></td>
             </tr>
             <%end%>
         </body>

@@ -4,7 +4,7 @@
     <div class="button", style="padding-top:10px"><%=f.submit form_submit_text(@statistic)%></div>
     <%end%>
 <%else%>
-<%=form_with(model: @statistic) do |f|%>
+<%=form_with(model: @statistic, url: race_statistic_path(@statistic.race, @statistic), method: 'put') do |f|%>
     <%=render 'form_partial', f:f%>
     <div class="button", style="padding-top:10px"><%=f.submit form_submit_text(@statistic)%></div>
     <%end%>

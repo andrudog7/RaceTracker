@@ -1,12 +1,12 @@
 <%if @races%>
     <%@races.order(created_at: :desc).each do |race|%>
-        <h4 class="race_link", style="margin: 10px 0px 0px 0px"><%=link_to race.display_name, race_statistics_path(race)%></h4>
+        <h5 class="race_link", style="margin: 10px 0px 0px 0px"><%=link_to race.display_name, race_statistics_path(race)%></h5>
         Finishers: <%=race.statistics.count%> 
     <%end%>
 <%else%>
-    <h3>Recent Races</h3>
+    <h3>Recently Created Races</h3>
     <%public_races.each do |race|%>
-        <h4 class="race_link" style="text-align:left"><%=link_to race.display_name, race_statistics_path(race)%></h4>
+        <h5 class="race_link" style="text-align:left"><%=link_to race.display_name, race_statistics_path(race)%></h5>
         Type: <%=race.type.name%><br>
         Date: <%=race.date_format%><br>
         Total Finishers: <%=race.statistics.count%>
