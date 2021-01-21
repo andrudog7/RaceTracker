@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
     def index 
         @users = User.where("id NOT IN(?)", current_user.id).order(:last_name)
+        @friends = current_user.friends.sort_by{|friend|friend.last_name}
     end
 
     def create
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
     def update 
         @user = User.find(params[:id])
         if @user.update(user_params)
+            flash[:message] = "Successfully Saved!"
             redirect_to edit_user_path(@user)
         else
             render :edit 

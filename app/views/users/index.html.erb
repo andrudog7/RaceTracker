@@ -1,5 +1,13 @@
-<h1 style="margin-bottom:0px">All Runners</h1>
-<p style="margin-top:0px">(alphabetically by last name)</p>
+<div class="runners", style="padding-left: 20px">
+    <div class="one">
+        <h1>Tracking</h1>
+        <%@friends.each do |friend|%>
+            <p><%=link_to "#{friend.first_name} #{friend.last_name}", user_friendship_path(current_user, friend)%></p>
+        <%end%>
+</div>
+    <div class="two", style="block:inline">
+    <h1 style="margin-bottom:0px">All Runners</h1>
+    <p style="margin-top:0px">(alphabetically by last name)</p>
 
 <table>
     <thead>
@@ -18,3 +26,5 @@
         <%end%>
         </body>
 </table>
+    </div>
+</div>

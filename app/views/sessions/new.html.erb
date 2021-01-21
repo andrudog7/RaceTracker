@@ -1,5 +1,6 @@
-<h1>Login below</h1>
-<div class="login_form">
+<div style="padding-left: 20px">
+    <h1>Login below</h1>
+    <div class="login_form">
     <%=form_with url: "/login", method: :post do |form| %>
         <%=form.label :email, "Email:" %>
         <%=form.email_field :email %><br>
@@ -7,7 +8,7 @@
         <%=form.password_field :password %><br>
         <div class="button", style="padding-top:5px"><%= form.submit "Login"%></div>
     <% end %>
-</div><br><br>
-<h1>Sign in with Google</h1>
-<div class="button"><%=button_to "Google Login", '/auth/google_oauth2'%>
+    </div><br><br>
+    <h1>Sign in with Google</h1>
+    <div class="button"><%=button_to "Google Login", '/auth/google_oauth2'%></div>
 </div>

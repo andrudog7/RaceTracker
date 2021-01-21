@@ -18,14 +18,14 @@ class Race < ApplicationRecord
         if attr["finish_time"].present? && attr["finish_pace"].present? && attr["public"].present?
             if self.id != nil
                 if attr["id"].present?
+                    stat = Statistic.find(attr["id"])
+                    stat.update
                 else
-                s = Statistic.new(:finish_time => attr["finish_time"], :finish_pace => attr["finish_pace"], :public => attr["public"], :user_id => attr["user_id"])
-                s.save
-                self.statistics << s
+                    stat = self.statistics.build(:finish_time => attr["finish_time"], :finish_pace => attr["finish_pace"], :public => attr["public"], :user_id => @current_user)
+                    self.statistics << stat
                 end
             end
         end
-        self.save
     end
 
     def date_format

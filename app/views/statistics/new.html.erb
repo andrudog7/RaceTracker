@@ -1,4 +1,16 @@
-<%=render 'races/race_view'%>
-<h4 style="text-align: left">Add Your Stats</h4>
-<%=render 'form'%>
+<div style="padding-left: 20px">
+    <%=render 'races/race_view'%>
+    <h4 style="text-align: left">Add Your Stats</h4>
+    <% if @statistic.errors.any? %>
+  <div id="error_explanation">
+    <h3>Please fix <%= pluralize(@statistic.errors.count, "error") %> below:</h3>
+    <ul>
+      <% @statistic.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+      </ul>
+  </div>
+  <% end %>
+    <%=render 'form'%>
+</div>
     

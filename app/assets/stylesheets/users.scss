@@ -9,11 +9,25 @@
     justify-items: center;
     column-gap: 0px;
 }
+
+.row div:first-child {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.row div:last-child {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
 .dashboard {
     float: left;
     width: 90%;
     border-style: solid;
-    border-width: 2px;
+    border-width: 3px;
+    border-radius: 25px;
+    border-color:rgb(65, 130, 187);
     background-color: rgb(255, 255, 113);
 }
 
@@ -30,18 +44,19 @@ div#race_types {
 div #Half-Marathon, div #5k, div #10k, div #Marathon {
     width: 100%;
     display: list-item;
-    border-radius: 10px;
-    border: 1px solid;
+    border: 3px soli;
+    border-color: rgb(65, 130, 187);
+    border-radius: 5px;
     padding: 10px;
 }
 
 h2 {
     text-align: center;
     background-color: rgb(255, 255, 113);
-    color: rgba(0, 53, 99, 0.708);
+    color: black;
     margin: 0px;
     padding: 5px;
-    border-bottom: 1px solid black;
+    border-radius: 25px;
 }
 
 h4{
@@ -52,7 +67,7 @@ h4 a {
     text-decoration: none;
     font-size: 150%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(65, 130, 187)
+    color: black;
 }
 
 #race_types ul {
@@ -72,13 +87,26 @@ h4 a {
     display: inline;
     width: 100%;
     border-style: solid;
-    border-width: 2px;
+    border-width: 3px;
+    border-radius: 5px;
+    border-color: rgb(65, 130, 187);
+}
+
+.column_two h2 {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 .race_search {
     text-align: center;
     border-bottom-style: solid;
-    border-bottom-width: 2px;
+    border-bottom-width: 5px;
+    border-bottom-color: rgb(65, 130, 187);
+    background-color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .friends {
@@ -87,6 +115,7 @@ h4 a {
     width: 100%;
     margin: none;
     text-align: center;
+    background-color: white;
 }
 
 .friend_stats {
@@ -97,4 +126,16 @@ h4 a {
 .field_with_errors {
     color: red;
     display: inline;
+}
+
+.runners {
+    display: flex
+}
+
+.one {
+    flex: 50%;
+}
+
+.two {
+    flex: 50%;
 }

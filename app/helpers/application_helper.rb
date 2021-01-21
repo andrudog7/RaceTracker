@@ -18,7 +18,7 @@ module ApplicationHelper
         @signup = link_to "Sign Up", new_user_path
         @login = link_to "Login", '/login'
         if !logged_in?
-            content_tag(:div, class: "menu_bar") do 
+            content_tag(:div, class: "menu_bar", style: "font-family='Segoe UI', Tahoma, Geneva, Verdana, sans-serif") do 
                 content_tag(:ul) do
                     @button = button_tag 'All Races', class: "dropdown_btn"
                     @dashboard_elements = [@logo, @signup, @login, @button]
@@ -31,11 +31,9 @@ module ApplicationHelper
                     @profile = link_to "My Profile", edit_user_path(current_user)
                     @dashboard = link_to "My Dashboard", user_path(current_user)
                     @button = button_tag 'My Races', class: "dropdown_btn"
-                    @friends = link_to "Following", user_friendships_path(current_user)
                     @logout = link_to "Logout", '/logout', method: "post"
-                    @all_races = link_to "All Races", races_path
                     @all_users = link_to "Runners", users_path
-                    @dashboard_elements = [@logo, @profile, @dashboard, @friends, @button, @all_races, @all_users, @logout]
+                    @dashboard_elements = [@logo, @profile, @dashboard, @button, @all_users, @logout]
                     
                     create_menu_buttons
                 end

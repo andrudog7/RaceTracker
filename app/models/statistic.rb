@@ -2,6 +2,8 @@ class Statistic < ApplicationRecord
     belongs_to :user
     belongs_to :race
     has_many :likes, -> { where(likes: {like: true } ) }
+    validates :finish_time, presence: true
+    validates :finish_pace, presence: true
 
     scope :ordered, -> do
         order(finish_time: :asc)

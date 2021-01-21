@@ -11,8 +11,6 @@ class RacesController < ApplicationController
                 @races
                 render 'users/show'
             end
-        else
-            @races = Race.all.order(date: :desc)
         end
     end
 
@@ -45,10 +43,6 @@ class RacesController < ApplicationController
         end
     end
 
-    # def show 
-    #     @race = Race.find(params[:id])
-    # end
-
     def edit 
         @race = Race.find(params[:id])
         if @race.owner == current_user
@@ -58,21 +52,16 @@ class RacesController < ApplicationController
         end
     end
 
-    def update  
-        race = Race.find(params[:id])
-        if race_params[:statistic][:id].present? && race_params[:statistic][:id] != ""
-            s = Statistic.find(race_params[:statistic][:id])
-            s.update(race_params[:statistic])
-        else
-            s = Statistic.new(race_params[:statistic])
-            s.user = current_user
-            s.race_id = params[:id]
-            s.save 
+    def update
+        @race = Race.find(params[:id])
+        @race.update(race_params)
+        if @race.statistics.last.user_id == nil
+            @race.statistics.last.user = current_user
         end
-        race.update(race_params)
-        if race.valid?
-            redirect_to race_statistics_path(race)
+        if @race.save
+            redirect_to race_statistics_path(@race)
         else
+            @race.errors[:statistics] << "cannot be blank."
             render 'edit'
         end
     end

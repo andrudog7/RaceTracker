@@ -37,6 +37,9 @@ class StatisticsController < ApplicationController
   def destroy 
     stat = Statistic.find(params[:id])
     race = stat.race
+    stat.likes.each do |like|
+      like.destroy
+    end
     stat.delete
     redirect_to race_statistics_path(race)
   end

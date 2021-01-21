@@ -7,11 +7,16 @@ class TypesController < ApplicationController
   end
 
   def show
-    @type = Type.find(params[:id])
-    if logged_in?
-      render 'users/show_race_type'
-    else
+    if params[:id].include?("races")
+      @races = Type.find_by_slug(params[:id])
       render 'show'
+    else
+      @type = Type.find(params[:id])
+      if logged_in?
+        render 'users/show_race_type'
+      else
+        render 'show'
+      end
     end
   end
 

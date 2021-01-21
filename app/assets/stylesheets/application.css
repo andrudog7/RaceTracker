@@ -111,7 +111,8 @@
 div.button a, div.button input {
         background-color: white;
         border: 3px solid black;
-        border-color:rgb(0, 5, 143);
+        border-color: rgb(65, 130, 187);
+        border-radius: 5px;
         color: black;
         padding: 6px 15px;
         text-align: center;
@@ -121,7 +122,7 @@ div.button a, div.button input {
         font-size: 14px;
       }
 div.button a:hover, a:visited, div.button input:hover {
-    background-color: orange;
+    background-color: rgb(128, 206, 255);
 }
 
 /*Form Formatting*/

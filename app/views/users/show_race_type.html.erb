@@ -7,11 +7,11 @@
             <tr>
                 <th></th>
                 <th>Race Name</th>
-                <th>Likes</th>
                 <th>Location</th>
                 <th>Date</th>
                 <th>Finish Time</th>
                 <th>Pace</th>
+                <th>Likes</th>
             </tr>
         </thead>
         <body>
@@ -19,11 +19,11 @@
             <tr>
                 <td><%=index + 1%></td>
                 <td><%=link_to stat.race.display_name, race_statistics_path(stat.race), style: "text-decoration:none"%></td>
-                <td><%=stat.likes.count%> <%=current_user_like_link(stat)%></td>
                 <td><%=stat.race.location%></td>
                 <td><%=stat.race.date_format%></td>
                 <td><%=current_user_stats(stat.race).finish_time_format%></td>
                 <td><%=current_user_stats(stat.race).finish_pace_format%></td>
+                <td><%=stat.likes.count%> <%=current_user_like_link(stat)%></td>
             </tr>
             <%end%>
         </body>

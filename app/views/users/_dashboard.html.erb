@@ -1,8 +1,8 @@
-<div class="dashboard">
+<div class="dashboard", style="border-radius:25px">
     <div id="dashboard"><h2>My Racing Dashboard</h2></div>
-    <div id="race_types" style="padding:8px;grid-gap:8px;background-color:rgb(65, 130, 187)">
+    <div id="race_types" style="padding:8px;grid-gap:8px;background-color:white">
         <%dashboard.each do |type|%>
-            <div id=<%=type%> style="padding:10px;border-radius:10px;border:1px solid;background-color:white"><h4><%=link_to type, type_path(find_type(type))%></h4>
+            <div id=<%=type%> style="padding:5px;border:3px solid;border-color:rgb(65, 130, 187);border-radius:5px;background-color:white;height:250px;width:220px"><h4 style="margin-top:1.5px"><%=link_to type, type_path(find_type(type))%></h4>
                 <ul>
                 <li style="font-weight:bold">Finished</li>
                 <li><%=user_race_count_of_type(type)%></li><br>

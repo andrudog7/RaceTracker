@@ -1,9 +1,0 @@
-<h2>All Races</h2>
-<div style="padding-left: 20px">
-<%@races.each do |race|%>
-    <h4 class="race_link" style="text-align:left"><%=link_to race.display_name, race_statistics_path(race)%></h4>
-    Type: <%=race.type.name%><br>
-    Date: <%=race.date_format%><br>
-    Total Finishers: <%=race.statistics.count%>
-<%end%>
-</div>
