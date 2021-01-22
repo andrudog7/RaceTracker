@@ -1,4 +1,6 @@
+
 <div style="padding-left: 20px">
+    <p style="color:red"><%= flash[:message]%></p>
     <h1>Login below</h1>
     <div class="login_form">
     <%=form_with url: "/login", method: :post do |form| %>

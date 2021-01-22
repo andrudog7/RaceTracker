@@ -16,7 +16,8 @@ class SessionsController < ApplicationController
             flash[:message] = "Welcome #{@user.first_name}"
             redirect_to user_path(@user)
         else
-            redirect_to '/'
+          flash[:message] = "The email or password was invalid.  Please try again."
+          render :new 
         end
   end
 

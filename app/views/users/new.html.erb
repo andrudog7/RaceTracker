@@ -1,14 +1,5 @@
 <div class="header", style="padding-left:20px">
   <h1>Create Profile</h1>
-  <% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h3>Please fix <%= pluralize(@user.errors.count, "error") %> below:</h3>
-    <ul>
-      <% @user.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-<%= render 'form'%>
+  <%=render '/application/errors', model:@user%>
+  <%= render 'form'%>
 </div>

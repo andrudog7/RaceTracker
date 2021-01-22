@@ -1,10 +1,5 @@
 class TypesController < ApplicationController
   before_action :require_logged_in, only: [:new, :create]
-  def new
-  end
-
-  def create
-  end
 
   def show
     if params[:id].include?("races")

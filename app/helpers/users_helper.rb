@@ -44,19 +44,5 @@ module UsersHelper
         end
     end
 
-    def friend_link_text(user)
-        if current_user.friendships.where(:friend_id => user.id).first.friendship == true 
-            "Unfollow"
-        else
-            "Follow"
-        end
-    end
-
-    def friend_link(user)
-        if current_user.friendships.where(:friend_id => user.id) != []
-            link_to friend_link_text(user), friendship_path(current_user.friendships.where(:friend_id => user.id).first), method: 'put'
-        else
-            link_to "Follow", user_friendships_path(user), method: 'post'
-        end
-    end
+    
 end
