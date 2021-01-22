@@ -1,0 +1,156 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.row {
+    display: grid;
+    gap: 2px;
+    grid-auto-flow: column;
+    justify-items: center;
+    column-gap: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.row div:first-child {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.row div:last-child {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.dashboard {
+    float: left;
+    width: 90%;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 25px;
+    border-color:rgb(65, 130, 187);
+}
+
+#dashboard {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: rgb(255, 255, 113);
+}
+
+div#race_types {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    padding: none;
+    align-items: center;
+    justify-items: center;
+    margin: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    height: 622px;
+}
+
+div#race_types a:hover {
+    color: rgb(128, 206, 255)
+}
+
+div #Half-Marathon, div #5k, div #10k, div #Marathon {
+    width: 100%;
+    display: list-item;
+    border: 3px soli;
+    border-color: rgb(65, 130, 187);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+h2 {
+    text-align: center;
+    background-color: rgb(255, 255, 113);
+    color: black;
+    margin: 0px;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+h4{
+    text-align: center;
+}
+
+h4 a {
+    text-decoration: none;
+    font-size: 150%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+}
+
+#race_types ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0px;
+}
+
+#race_types {
+    background-color: white;
+}
+
+.column_two {
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-items: center;
+    display: inline;
+    width: 100%;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 5px;
+    border-color: rgb(65, 130, 187);
+}
+
+.column_two h2 {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.race_search {
+    text-align: center;
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+    border-bottom-color: rgb(65, 130, 187);
+    background-color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.friends {
+    float: left;
+    display: block;
+    width: 100%;
+    margin: none;
+    text-align: center;
+    background-color: white;
+    height: 460px;
+}
+
+.friend_stats {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.field_with_errors {
+    color: red;
+    display: inline;
+}
+
+.runners {
+    display: flex
+}
+
+.one {
+    flex: 50%;
+}
+
+.two {
+    flex: 50%;
+}

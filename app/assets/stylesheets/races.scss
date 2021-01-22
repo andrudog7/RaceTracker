@@ -1,0 +1,16 @@
+// Place all the styles related to the Races controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.race_view {
+    font-weight: bold;
+    display: inline;
+}
+
+.firstpage a {
+    color:black;
+}
+
+.firstpage a:hover {
+    color: rgb(128, 206, 255)
+}

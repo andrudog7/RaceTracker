@@ -1,0 +1,50 @@
+<%= flash[:message]%>
+<div class="race_stats", style="padding-left: 20px">
+<h1 style="margin: 15px 0px 5px 0px"><%=@race.display_name%></h1>
+<div class="race_view"></div>
+<ul style="list-style-type:none;padding:0px;margin-top:10px">
+    <li><div class="race_view">Location: </div><%=@race.location%></li>
+    <li><div class="race_view">Date: </div><%=@race.date_format%></li>
+    <li><div class="race_view">Type: </div><%=@race.type.name%></li>
+</ul>
+    <table class = "finisher_stats">
+        <thead>
+        <caption><h3 style="text-align: center;margin-top:0px">Total Finishers: <%=@race.statistics.count%></h3></caption>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Finish Time</th>
+                <th>Pace</th>
+                <%if logged_in?%>
+                <th>Likes</th>
+                <%end%>
+            </tr>
+        </thead>
+        <body>
+            <%x = 0%>
+            <%public_statistics(@race).each do |stat| %>  
+            <tr>
+                <td><%= x += 1%></td>
+                <td><%=stat.user.first_name%> <%=stat.user.last_name%></td>
+                <td><%=stat.user.age%></td>
+                <td><%=stat.finish_time_format%></td>
+                <td><%=stat.finish_pace_format%></td>
+                <%if logged_in?%>
+                <td><%=stat.likes.count%> <%=current_user_like_link(stat)%></td>
+                <%end%>
+            </tr>
+            <%end%>
+        </body>
+    </table><br><br>
+
+<%if @race.owner == current_user && logged_in?%>
+<div class="button"><%=link_to "Edit Race", edit_race_path(@race), method: 'get'%>
+<%elsif @race.users.include?(current_user)%>
+<div class="button"><%=link_to "Edit My Statistic", edit_race_statistic_path(@race.id, current_user_stats(@race).id)%></div>
+<%elsif !logged_in?%>
+<%nil%>
+<%else%>
+<div class="button"><%=link_to "Add My Statistic", new_race_statistic_path(@race)%></div>
+<%end%>
+</div>

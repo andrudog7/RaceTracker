@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  finish_time: 1.5
+  finish_pace: 1.5
+  public: false
+  race: 
+  user: 
+
+two:
+  finish_time: 1.5
+  finish_pace: 1.5
+  public: false
+  race: 
+  user: 

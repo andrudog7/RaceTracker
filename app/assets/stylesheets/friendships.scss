@@ -1,0 +1,34 @@
+// Place all the styles related to the Friendships controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.friends_table {
+    border-collapse: collapse;
+    border-radius: 5px 5px 5px 5px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    display: inline-table;
+  }
+  
+  .friends_table thead tr {
+    background-color: #ffc562;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .friends_table th,
+  .friends_table td {
+    padding: 4px 10px;
+  }
+  
+  .friends_table tbody tr {
+    border-bottom: 1px solid lightgray;
+  }
+  
+  .friends_table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .friends_table tbody tr:last-of-type {
+    border-bottom: 5px solid rgb(65, 130, 187);
+  }

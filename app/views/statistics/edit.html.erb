@@ -1,0 +1,8 @@
+<div style="padding-left: 20px">
+<h1>Edit Your Statistic</h1>
+    <%=render '/application/errors', model:@statistic%>
+    <%= render 'races/race_view'%>
+    <h4 style="text-align:left">Update Your Stats</h4>
+    <%=render 'form'%>
+    <div class="button", style="padding-top:10px"><%=link_to "Delete My Stats", statistic_path(current_user_stats_for_form(@race)), :method => 'delete'%></div>
+</div>

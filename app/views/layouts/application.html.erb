@@ -8,10 +8,30 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  </head style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+  
+  <%=menu_bar%>
+  
+  <script>
+    var dropdown = document.getElementsByClassName("dropdown_btn");
+var i;
 
-  <body>
-  <h2>test</h2>
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "inline") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "inline";
+  }
+  });
+}
+  </script>
+  
+  <body style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin:0px">
+    <div style="margin-left: 120px;">
     <%= yield %>
+    </div>
   </body>
 </html>

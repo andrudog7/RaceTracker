@@ -1,0 +1,35 @@
+// Place all the styles related to the Statistics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* --- Race Table Display Styles --- */
+.finisher_stats {
+    border-collapse: collapse;
+    margin: 25px 0;
+    border-radius: 5px 5px 5px 5px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .finisher_stats thead tr {
+    background-color: rgb(255, 255, 113);
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .finisher_stats th,
+  .finisher_stats td {
+    padding: 12px 15px;
+  }
+  
+  .finisher_stats tbody tr {
+    border-bottom: 1px solid lightgray;
+  }
+  
+  .finisher_stats tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .finisher_stats tbody tr:last-of-type {
+    border-bottom: 5px solid rgb(65, 130, 187);
+  }

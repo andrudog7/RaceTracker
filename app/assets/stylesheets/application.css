@@ -13,3 +13,126 @@
  *= require_tree .
  *= require_self
  */
+
+ .menu_bar {
+     list-style: none;
+     width: 120px;
+     height: 100%;
+     margin: 0;
+     padding: 0px;
+     position: fixed;
+     left: 0px;
+     top: 0px;
+     background-color: rgb(255, 255, 113);
+     border: 1px solid rgb(255, 255, 113);
+}
+.dropdown_btn {
+    background-color: rgb(255, 255, 113);
+    outline: none;
+    border: none;
+}
+
+.menu_bar li, .dropdown_btn {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    text-align: center;
+    height: 25px;
+    width: 120px;
+    position: relative;
+    left: -40px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: rgb(0, 5, 143);
+}
+
+.menu_bar li:first-child img {
+    height: 110px;
+}
+
+.menu_bar li:first-child {
+    height: 60px;
+}
+
+.menu_bar img a:hover:not(.active) {
+    background-color: transparent;
+}
+
+.menu_bar li:last-child {
+    border-bottom: none;
+  }
+
+.menu_bar li a {
+    color: rgb(0, 5, 143);
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    top: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.dropdown_container {
+    display: none;
+    border: none;
+    position: relative;
+  }
+
+.dropdown_container li {
+    position: relative;
+    left: -80px;
+    background-color: rgb(179, 178, 177);
+  }
+.dropdown_container li:first-child {
+    height: 25px;
+    padding-top: 5px;
+}
+
+.menu_bar li a:hover:not(.active), .dropdown_btn:hover:not(.active) {
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+}
+
+.menu_bar li:first-child a:hover:not(.active) {
+    background-color: transparent;
+}
+
+.menu_bar li a:active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  /* Button Styling */
+
+div.button a, div.button input {
+        background-color: white;
+        border: 3px solid black;
+        border-color: rgb(65, 130, 187);
+        border-radius: 5px;
+        color: black;
+        padding: 6px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+      }
+div.button a:hover, a:visited, div.button input:hover {
+    background-color: rgb(128, 206, 255);
+}
+
+/*Form Formatting*/
+
+label {
+    width: 130px;
+    display: inline-block;
+    padding: 3px;
+  }
+
+.race_link a {
+    text-decoration: none;
+}

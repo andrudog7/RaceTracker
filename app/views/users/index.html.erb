@@ -1,0 +1,33 @@
+<div class="runners", style="padding-left: 20px">
+    <div class="one">
+        <h1 style="margin-bottom:0px">Tracking</h1>
+        <p style="margin-top:0px">(click to view runner's page)</p>
+        <%@friends.each do |friend|%>
+            <p style="margin-left:10px"><%=link_to "#{friend.first_name} #{friend.last_name}", user_friendship_path(current_user, friend)%></p>
+        <%end%>
+</div>
+    <div class="two", style="block:inline">
+    <h1 style="margin-bottom:0px">All Runners</h1>
+    <p style="margin-top:0px">(alphabetically by last name)</p>
+
+<table class="finisher_stats">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Follow</th>
+        </tr> 
+    </thead>
+    <body>
+        <tr>
+            <%@users.each do |user|%>
+            <td><%=user.first_name%> <%=user.last_name%> </td>
+            <td><%=user.age%></td>
+            <td><%=friend_link(user)%></td>
+            
+        </tr>
+        <%end%>
+        </body>
+</table>
+    </div>
+</div>

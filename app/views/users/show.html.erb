@@ -1,0 +1,33 @@
+ <div style="padding:10px;background-color:rgb(65, 130, 187)"><%= flash[:message]%></div>
+<div class="row", style="padding:10px;background-color:rgb(65, 130, 187)">
+    <%if @races%>
+        <%= render 'users/dashboard'%>
+    <%else%>
+        <%=render 'dashboard'%>
+    <%end%>
+    <div class="column_two">
+        <div class="race_search">
+        <h2 style="text-align:center">Find or Create A Race</h2><br>
+        <%= form_tag(races_path, method:"get") do |f| %>
+            <%= label_tag("Search by:", nil, style:"width: 100px") %>
+            <%= text_field_tag('filter', nil, placeholder: "Name/City/Location", style: "display:-webkit-inline-flex") %>
+            <div style="padding:5px">and/or</div>
+            <%= label_tag("date:", nil, style:"width: 80px") %>
+            <%= date_field_tag('date') %>
+            <div class="button", style="padding-top:20px"><%= submit_tag("Search")%> <%=link_to "New Race", new_race_path%></div>
+            <div class="button", style="padding-top:20;"></div><br>
+        <% end %>
+        <%if @races%>
+            <%=render '/races/public_races'%>
+        <%end%>
+        </div>
+        <div class="friends">
+            <h2 style="text-align:center;border-top-radius:0px">Tracking Feed</h2><br>
+            <%if @races%>
+                <%=render 'users/friends_table'%>
+            <%else%>
+                <%=render 'friends_table'%>
+            <%end%>
+        </div>
+    </div>
+</div>

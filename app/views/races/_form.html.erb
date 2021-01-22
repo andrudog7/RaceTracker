@@ -1,0 +1,34 @@
+<div style="padding-left:20px">
+<%=form_with(model: @race) do |f|%>
+    <%=f.label :name, "Name:"%>
+    <%=f.text_field :name%><br>
+    <%=f.label :location, "Location:"%>
+    <%=f.text_field :location%><br>
+    <%=f.label :date, "Date:"%>
+    <%=f.date_field :date%><br>
+    <%=f.fields_for :type, @race.type do |t|%>
+        <%if @race.type.name == nil%>
+            <%=t.label nil, "Select Type:"%>
+            <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, :prompt => 'Select Type'%><br><br>
+            <h4 style="text-align:left">Or Add a New Race Type:</h4>
+            <%=t.label :name, "Name (ex. 4 Miler):"%>
+            <%=t.text_field :name%><br>
+            <%=t.label :distance, "Distance (in miles):"%>
+            <%=t.text_field :distance%><br><br>
+        <%else%>
+            <%=t.hidden_field :id%>
+            <%=t.label "Type:"%>
+            <%=t.collection_select :id, Type.all.order(:distance).uniq, :id, :name, {:prompt => true, :selected => @race.type.id}%><br><br>
+        <%end%>
+    <%end%>
+    <%=f.hidden_field :public%>
+    <%=race_form_text(@race)%>
+    <%=f.fields_for :statistic, current_user_stats_for_form(@race) do |s|%>
+        <%=render 'statistics/form_partial', f:s%>
+    <%end%>
+    <div class="button"><%=f.submit submit_button_text(@race)%></div>
+    <%if current_user_stats_for_form(@race).id != nil && @race.id != nil%>
+        <div class="button", style="padding-top:15px"><%=link_to "Delete My Statistic", statistic_path(current_user_stats_for_form(@race)), :method => 'delete'%></div>
+    <%end%>
+<%end%>
+</div>
