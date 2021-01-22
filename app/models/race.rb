@@ -19,7 +19,7 @@ class Race < ApplicationRecord
             if self.id != nil
                 if attr["id"].present?
                     stat = Statistic.find(attr["id"])
-                    stat.update
+                    stat.update(attr)
                 else
                     stat = self.statistics.build(:finish_time => attr["finish_time"], :finish_pace => attr["finish_pace"], :public => attr["public"], :user_id => @current_user)
                     self.statistics << stat
