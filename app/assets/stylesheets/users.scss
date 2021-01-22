@@ -8,6 +8,8 @@
     grid-auto-flow: column;
     justify-items: center;
     column-gap: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
 }
 
 .row div:first-child {
@@ -39,6 +41,10 @@ div#race_types {
     align-items: center;
     justify-items: center;
     margin: none;
+}
+
+div#race_types a:hover {
+    color: rgb(128, 206, 255)
 }
 
 div #Half-Marathon, div #5k, div #10k, div #Marathon {
