@@ -30,6 +30,11 @@
     border-width: 3px;
     border-radius: 25px;
     border-color:rgb(65, 130, 187);
+}
+
+#dashboard {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
     background-color: rgb(255, 255, 113);
 }
 
@@ -41,6 +46,9 @@ div#race_types {
     align-items: center;
     justify-items: center;
     margin: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    height: 622px;
 }
 
 div#race_types a:hover {
@@ -122,6 +130,7 @@ h4 a {
     margin: none;
     text-align: center;
     background-color: white;
+    height: 460px;
 }
 
 .friend_stats {
