@@ -5,7 +5,7 @@ class RacesController < ApplicationController
         if params[:filter].present? || params[:date].present?
             @races = Race.search_races(params)
             if @races == []
-                flash[:message] = "No races were found.  Create the race if it doesn't exist!"
+                flash[:race] = "No races were found.  Create the race if it doesn't exist!"
                 redirect_to user_path(current_user)
             else
                 @races
