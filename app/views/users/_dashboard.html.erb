@@ -4,6 +4,7 @@
         <%dashboard.each do |type|%>
             <div id=<%=type%> style="padding:5px;border:3px solid;border-color:rgb(65, 130, 187);border-radius:5px;background-color:white;height:250px;width:220px"><h4 style="margin-top:1.5px"><%=link_to type, type_path(find_type(type))%></h4>
                 <ul>
+                <li><%=link_to "Statistics by Type", type_statistics_path(type)%></li>
                 <li style="font-weight:bold">Finished</li>
                 <li><%=user_race_count_of_type(type)%></li><br>
                 <li style="font-weight:bold">Total Miles</li>

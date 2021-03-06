@@ -15,6 +15,8 @@ class RacesController < ApplicationController
             flash[:race] = "Please enter information to search by."
             redirect_to user_path(current_user)
         end
+        # races = Race.all
+        # render json: races.to_json
     end
 
     def new 

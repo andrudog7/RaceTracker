@@ -1,0 +1,5 @@
+<h1><%=@stats.first.race.type.name%> Statistics</h1>
+<ul><%=@stats.each do |stat|%>
+    <li><%=stat.finish_time_format%> - <%=stat.finish_pace_format%></li>
+    <%end%>
+</ul>
