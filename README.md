@@ -4,6 +4,10 @@ Welcome to the RaceTracker Rails application!
 
 This app provides runners everywhere a centralized location to store all of their official racing statistics! It allows users to sign up for a RaceTracker account. From there, they can create races that contain all of their official stats (i.e. finish time, pace, date, distance, etc.). Users can view a snapshot of their racing history in their profile dashboard or view races by distances to compare all of their finish times. It also has a social component where you can follow other users and like their race results too.  A great place to not only store your official race data, but interact with friends while doing it!
 
+Demo Video: https://www.youtube.com/watch?v=4cRLzBoNPYA&t=14s
+
+Blog Post: https://andrewksmoker.medium.com/hidden-away-behind-the-rails-magic-9aca0ec80536
+
 Installation
 Run the program locally by following these steps: 
 

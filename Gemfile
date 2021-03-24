@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.1'
+ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.7'
  gem 'omniauth', '~> 1.9.0'
  gem 'omniauth-rails_csrf_protection'
  gem 'omniauth-google-oauth2'
+ gem 'rack-cors'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

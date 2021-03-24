@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :races, except: [:destroy] do
     resources :statistics, only: [:new, :create, :index, :edit, :update] 
   end
-  resources :types
+  resources :types do 
+    resources :statistics, only: [:index]
+  end
   get "/types/:slug_races", to: 'types#show_races'
 end

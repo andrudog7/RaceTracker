@@ -5,13 +5,18 @@ class RacesController < ApplicationController
         if params[:filter].present? || params[:date].present?
             @races = Race.search_races(params)
             if @races == []
-                flash[:race] = "No races were found.  Create the race if it doesn't exist!"
+                flash[:race] = "No races were found.  Add a new race if it doesn't exist!"
                 redirect_to user_path(current_user)
             else
                 @races
                 render 'users/show'
             end
+        else 
+            flash[:race] = "Please enter information to search by."
+            redirect_to user_path(current_user)
         end
+        # races = Race.all
+        # render json: races.to_json
     end
 
     def new 

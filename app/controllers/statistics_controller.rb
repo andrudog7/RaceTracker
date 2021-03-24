@@ -17,7 +17,13 @@ class StatisticsController < ApplicationController
   end
 
   def index
+    if params[:type_id]
+      type = Type.find_by(:name => params[:type_id])
+      @stats = type.statistics.where(:public => true)
+      render 'statistics/type_statistics'
+    else
     @race = Race.find(params[:race_id])
+    end
   end
 
   def edit 
