@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Type.create(name: "Marathon", distance: 26.2)
+Type.create(name: "Half-Marathon", distance: 13.1)
+Type.create(name: "5k", distance: 3.1)
+Type.create(name: "10k", distance: 6.2)
