@@ -44,5 +44,15 @@ module UsersHelper
         end
     end
 
+    def fastest_race_year(type)
+        if user_races_of_type(type) != []
+            user_races_of_type(type).statistics.ordered.where(:user => current_user).first.race.date.strftime("%Y")
+        else 
+            ""
+        end
+    end
+
+
+
     
 end
