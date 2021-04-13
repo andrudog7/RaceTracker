@@ -33,7 +33,7 @@ class Race < ApplicationRecord
     end
 
     def display_name
-        self.name + " " + self.date.strftime("%Y")
+        self.name.include?(self.date.strftime("%Y")) ? self.name : self.name + " " + self.date.strftime("%Y")
     end
 
     def self.search_races(params)
