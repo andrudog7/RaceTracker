@@ -2,7 +2,7 @@
     <div id="dashboard"><h2>My Racing Dashboard</h2></div>
     <div id="race_types" style="padding:8px;grid-gap:8px;background-color:white">
         <%dashboard.each do |type|%>
-            <div id=<%=type%> style="padding:5px;border:3px solid;border-color:rgb(65, 130, 187);border-radius:5px;background-color:white;height:250px;width:220px"><h4 style="margin-top:1.5px"><%=link_to type, type_path(find_type(type))%></h4>
+            <div id=<%=type%> style="padding:5px;border:3px solid;border-color:rgb(65, 130, 187);border-radius:5px;background-color:white;height:270px;width:220px"><h4 style="margin-top:1.5px"><%=link_to type, type_path(find_type(type))%></h4>
                 <ul>
                 <li style="font-weight:bold">Finished</li>
                 <li><%=user_race_count_of_type(type)%></li><br>
@@ -11,8 +11,9 @@
                     <div class="fastest">
                     <li style="font-weight:bold">Fastest <%=type%></li>
                     <li><%=fastest_race_name(type)%></li>
-                    <li>Finish Time: <%=fastest_race_finish_time(type)%></li>
-                    <li>Finish Pace: <%=fastest_race_finish_pace(type)%></li>
+                    <li><%=fastest_race_year(type)%></li>
+                    <li><%=fastest_race_finish_time(type)%></li>
+                    <li><%=fastest_race_finish_pace(type)%></li>
                     </div>
                 </ul>
             </div>  

@@ -1,33 +1,38 @@
 <div class="runners", style="padding-left: 30px">
+    <div class="two", style="block:inline">
+    <h1 style="margin-bottom:0px">All Runners</h1>
+    <br>
+    <%= form_tag(users_path, method:"get") do |f| %>
+            <%= text_field_tag('filter', nil, placeholder: "Search by Name", style: "display:-webkit-inline-flex") %>
+            <div class="button", style="padding-top:20px"><%= submit_tag("Find")%></div>
+        <% end %>
+
+    <table class="finisher_stats">
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Age</th>
+                <th>Follow</th>
+            </tr> 
+        </thead>
+        <body>
+            <tr>
+                <%@users.each do |user|%>
+                <td><%=user.last_name%> </td>
+                <td><%=user.first_name%></td>
+                <td><%=user.age%></td>
+                <td><%=friend_link(user)%></td>
+            </tr>
+                <%end%>
+        </body>
+    </table>
+    </div>
+
     <div class="one">
         <h1 style="margin-bottom:0px">Tracking</h1>
         <%@friends.each do |friend|%>
             <p style="margin-left:10px"><%=link_to "#{friend.first_name} #{friend.last_name}", user_friendship_path(current_user, friend)%></p>
         <%end%>
-</div>
-    <div class="two", style="block:inline">
-    <h1 style="margin-bottom:0px">All Runners</h1>
-
-<table class="finisher_stats">
-    <thead>
-        <tr>
-            <th>Last Name</th>
-            <th>First Name</th>
-            <th>Age</th>
-            <th>Follow</th>
-        </tr> 
-    </thead>
-    <body>
-        <tr>
-            <%@users.each do |user|%>
-            <td><%=user.last_name%> </td>
-            <td><%=user.first_name%></td>
-            <td><%=user.age%></td>
-            <td><%=friend_link(user)%></td>
-            
-        </tr>
-        <%end%>
-        </body>
-</table>
     </div>
 </div>

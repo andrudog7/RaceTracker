@@ -6,8 +6,13 @@ class UsersController < ApplicationController
     end
 
     def index 
-        @users = User.where("id NOT IN(?)", current_user.id).order(:last_name)
-        @friends = current_user.friends.sort_by{|friend|friend.last_name}
+        if params[:filter].present?
+            @users = User.where("first_name ~* ? or last_name ~* ?", "#{params[:filter]}", "#{params[:filter]}")
+            @friends = current_user.friends.sort_by{|friend|friend.last_name}
+        else
+            @users = User.where("id NOT IN(?)", current_user.id).order(:last_name)
+            @friends = current_user.friends.sort_by{|friend|friend.last_name}
+        end
     end
 
     def create
@@ -50,6 +55,6 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :age, :password, :password_confirmation)
+        params.require(:user).permit(:first_name, :last_name, :email, :age, :password, :password_confirmation, :filter)
     end
 end
