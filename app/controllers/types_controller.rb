@@ -21,6 +21,9 @@ class TypesController < ApplicationController
         elsif params[:sort] === "name"
           @my_stats = @my_stats.sort{|a, b| a.race.name <=> b.race.name}
           render 'users/show_race_type'
+        elsif params[:sort] === "date"
+          @my_stats = @my_stats.sort{|a, b| a.race.date <=> b.race.date}
+          render 'users/show_race_type'
         else
           render 'users/show_race_type'
         end

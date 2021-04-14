@@ -8,7 +8,7 @@
                 <th></th>
                 <th><%=link_to "Race", type_path(@type, sort: "name")%></th>
                 <th><%=link_to "Location", type_path(@type, sort: "location")%></th>
-                <th>Date</th>
+                <th><%=link_to "Date", type_path(@type, sort: "date")%></th>
                 <th><%=link_to "Finish Time", type_path(@type, sort: "finish_time")%></th>
                 <th>Pace</th>
                 <th><%=link_to "Likes", type_path(@type, sort: "likes")%></th>
