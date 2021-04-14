@@ -3,17 +3,17 @@ module RacesHelper
         Race.all.order(:created_at).reverse_order.limit(6)
     end
 
-    def public_statistics(race)
-        if race.users.include?(current_user)
-            if race.statistics.where(:user => current_user).first.public != true 
-                race.statistics.ordered.where(:public => true).or(race.statistics.where(:user => current_user))
-            else 
-                race.statistics.ordered.where(:public => true)  
-            end
-        else
-            race.statistics.ordered.where(:public => true)  
-        end
-    end
+    # def public_statistics(race)
+    #     if race.users.include?(current_user)
+    #         if race.statistics.where(:user => current_user).first.public != true 
+    #             race.statistics.ordered.where(:public => true).or(race.statistics.where(:user => current_user))
+    #         else 
+    #             race.statistics.ordered.where(:public => true)  
+    #         end
+    #     else
+    #         race.statistics.ordered.where(:public => true)  
+    #     end
+    # end
 
     def current_user_stats(race)
         race.statistics.where(:user_id => current_user.id).first
