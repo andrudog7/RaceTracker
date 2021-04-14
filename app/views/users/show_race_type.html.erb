@@ -6,16 +6,16 @@
         <caption><h3 style="text-align: center"></h3></caption>
             <tr>
                 <th></th>
-                <th>Race</th>
-                <th>Location</th>
-                <th>Date</th>
-                <th>Finish Time</th>
+                <th><%=link_to "Race", type_path(@type, sort: "name")%></th>
+                <th><%=link_to "Location", type_path(@type, sort: "location")%></th>
+                <th><%=link_to "Date", type_path(@type, sort: "date")%></th>
+                <th><%=link_to "Finish Time", type_path(@type, sort: "finish_time")%></th>
                 <th>Pace</th>
-                <th>Likes</th>
+                <th><%=link_to "Likes", type_path(@type, sort: "likes")%></th>
             </tr>
         </thead>
         <body>
-            <%@type.statistics.ordered.where(:user_id => current_user).each_with_index do |stat, index|%>
+            <%@my_stats.each_with_index do |stat, index|%>
             <tr>
                 <td><%=index + 1%></td>
                 <td><%=link_to stat.race.display_name, race_statistics_path(stat.race), style: "text-decoration:none"%></td>

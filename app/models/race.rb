@@ -58,4 +58,16 @@ class Race < ApplicationRecord
         end
         @races
     end
+
+    def public_statistics(current_user)
+        if self.users.include?(current_user)
+            if self.statistics.where(:user => current_user).first.public != true 
+                self.statistics.ordered.where(:public => true).or(self.statistics.where(:user => current_user))
+            else 
+                self.statistics.ordered.where(:public => true)  
+            end
+        else
+            self.statistics.ordered.where(:public => true)  
+        end
+    end
 end

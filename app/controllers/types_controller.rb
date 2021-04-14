@@ -8,7 +8,25 @@ class TypesController < ApplicationController
     else
       @type = Type.find(params[:id])
       if logged_in?
-        render 'users/show_race_type'
+        @my_stats = @type.statistics.ordered.where(:user_id => current_user)
+        if params[:sort] === "likes"
+          @my_stats = @my_stats.sort{|a, b| b.likes.count <=> a.likes.count}
+          render 'users/show_race_type'
+        elsif params[:sort] === "finish_time"
+          @my_stats = @my_stats.sort{|a, b| a.finish_time_format <=> b.finish_time_format}
+          render 'users/show_race_type'
+        elsif params[:sort] === "location"
+          @my_stats = @my_stats.sort{|a, b| a.race.location <=> b.race.location}
+          render 'users/show_race_type'
+        elsif params[:sort] === "name"
+          @my_stats = @my_stats.sort{|a, b| a.race.name <=> b.race.name}
+          render 'users/show_race_type'
+        elsif params[:sort] === "date"
+          @my_stats = @my_stats.sort{|a, b| a.race.date <=> b.race.date}
+          render 'users/show_race_type'
+        else
+          render 'users/show_race_type'
+        end
       else
         render 'show'
       end
